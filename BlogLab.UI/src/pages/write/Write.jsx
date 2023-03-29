@@ -28,12 +28,12 @@ export default function Write() {
       data.append("file", file);
       newPost.photo = filename;
       try {
-        await axios.post(config.APP_URL +"/upload", data);
+        await axios.post(config.APP_URL +"/api/Blog", data);
       } catch (err) {}
     }
     try {
-      const res = await axios.post(config.APP_URL + "/posts", newPost);
-      window.location.replace(config.APP_URL+ "/post/" + res.data._id);
+      const res = await axios.post(config.APP_URL + "/api/Blog", newPost);
+      window.location.replace(config.APP_URL+ "/api/Blog" + res.data._id);
     } catch (err) {}
   };
   return (

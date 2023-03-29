@@ -63,7 +63,7 @@ namespace BlogLab.Web.Controllers
             return Ok(photos);
         }
 
-        [HttpGet("upload")]
+        [HttpGet("{photoId}")]
         public async Task<ActionResult<Photo>> Get(int photoId)
         {
             var photo = await _photoRepository.GetAsync(photoId);

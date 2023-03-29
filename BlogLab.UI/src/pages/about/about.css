@@ -1,0 +1,66 @@
+.about {
+    flex: 3;
+    margin: 0px;
+    padding-bottom: 30px;
+    background-color: #fdfbfb;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+.aboutItem{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+.aboutTitle{
+    margin: 1px;
+    padding: 15px;
+    width: 90%;
+    border-top: 1px solid #a7a4a4;
+    border-bottom: 1px solid #a7a4a4;
+    font-family: 'Lora',serif;
+    font-size: 30px;
+    color: #222;
+    font-weight: 600;
+    line-height: 25px;
+    text-align: center;
+}
+.topIconss {
+    padding: 10px;
+	  text-align: center;
+	  text-decoration: none;
+	  margin: 5px 2px;
+	  border-radius: 8px;
+	 font-size: 45px;
+     margin: 0;
+     display: flex;
+     cursor: pointer;
+}
+.aboutimg {
+    border-radius: 50%;
+   width: 15%;
+}
+.follow{
+    margin: 1px;
+    padding: 15px;
+    width: 90%;
+    font-family: 'Lora',serif;
+    font-size: 20px;
+    color: black;
+    font-weight: 600;
+    line-height: 20px;
+    text-align: center;
+}
+.text {
+    color: black;
+    font-size: medium;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+.headdqwe {
+    color: black;
+    font-size: large;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}

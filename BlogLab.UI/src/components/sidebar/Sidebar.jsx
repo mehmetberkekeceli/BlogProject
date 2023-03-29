@@ -9,7 +9,7 @@ export default function Sidebar() {
 
   useEffect(() => {
     const getCats = async () => {
-      const res = await axios.get(config.APP_URL+"/categories");
+      const res = await axios.get(config.APP_URL+"/api/Blog/famous");
       setCats(res.data);
     };
     getCats();

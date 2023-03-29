@@ -28,7 +28,7 @@ export default function Login() {
 
     dispatch({ type: "LOGIN_START" });
     try {
-      const res = await axios.post(`${config.APP_URL}/login`, {
+      const res = await axios.post(`${config.APP_URL}/api/Account/login`, {
         username: userRef.current.value,
         password: passwordRef.current.value,
 
@@ -70,5 +70,6 @@ export default function Login() {
         </Link>
       </button>
     </div>
+    
   );
 }

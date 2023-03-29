@@ -5,15 +5,35 @@ import "./topbar.css";
 
 export default function TopBar() {
   const { user, dispatch } = useContext(Context);
-  const PF = "http://localhost:3000/images/"
+  const PF = "http://localhost:5000/images/"
 
   const handleLogout = () => {
-    dispatch({ type: "LOGOUT" });
+    dispatch({ type: "Çıkış Yap!" });
   };
   return (
     <div className="top">
       <div className="topLeft">
         <i className="MBRKCL BLOG">MBRKCL BLOG</i>
+      </div>
+      <div className="topIcon">
+        <a href="https://github.com/mehmetberkekeceli" target="_blank">
+        <i class="fa-brands fa-square-github"></i>
+        </a>
+      </div>
+      <div className="topIcon">
+        <a href="https://tr.linkedin.com/in/mehmet-berke-ke%C3%A7eli-300576177" target="_blank">
+      <i class="fa-brands fa-linkedin" ></i>
+      </a>
+      </div>
+      <div className="topIcon">
+        <a href="https://twitter.com/mbrkcl7" target="_blank">
+        <i class="fa-brands fa-twitter"></i>
+          </a>
+      </div>
+      <div>
+        <a href="https://t.me/mbrkcl" target="_blank">
+        <i class="fa-brands fa-telegram"></i>
+        </a>
       </div>
       <div className="topCenter">
         <ul className="topList">
@@ -23,26 +43,19 @@ export default function TopBar() {
             </Link>
           </li>
           <li className="topListItem">
-            <Link className="link" to="/">
+            <Link className="link" to="/about">
               Hakkımda
             </Link>
           </li>
           <li className="topListItem">
-            <Link className="link" to="/post/api">
-              Gönderi
+            <Link className="link" to="/write">
+              Gönderi Yayınla !
             </Link>
-          </li>
-          <li className="topListItem" onClick={handleLogout}>
-            {user && "LOGOUT"}
           </li>
           
-          <li className="topListItem">
-            <Link className="link" to="/write">
-            Gönderi Yayınla!
-            </Link>
-          </li>
+          <i class="fa-solid fa-star"></i>
           <li className="topListItem" onClick={handleLogout}>
-            {user && "LOGOUT"}
+            {user && "Çıkış Yap"}
           </li>
         </ul>
       </div>
@@ -55,12 +68,12 @@ export default function TopBar() {
           <ul className="topList">
             <li className="topListItem">
               <Link className="link" to="/login">
-                Giriş Yap!
+                Giriş Yap
               </Link>
             </li>
             <li className="topListItem">
               <Link className="link" to="/register">
-                Kayıt Ol!
+                Kayıt Ol
               </Link>
             </li>
           </ul>
