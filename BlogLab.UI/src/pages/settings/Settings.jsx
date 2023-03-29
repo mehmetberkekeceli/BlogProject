@@ -8,8 +8,6 @@ import { config } from "../../config/env";
 
 export default function Settings() {
 
-  const [_user] = useAuth();
-
   const [file, setFile] = useState(null);
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");

@@ -13,6 +13,7 @@ export default function TopBar() {
   return (
     <div className="top">
       <div className="topLeft">
+      <i class="fa-solid fa-meteor"></i>
         <i className="MBRKCL BLOG">MBRKCL BLOG</i>
       </div>
       <div className="topIcon">
@@ -30,11 +31,12 @@ export default function TopBar() {
         <i class="fa-brands fa-twitter"></i>
           </a>
       </div>
-      <div>
+      <div className="topIcon">
         <a href="https://t.me/mbrkcl" target="_blank">
         <i class="fa-brands fa-telegram"></i>
         </a>
       </div>
+      
       <div className="topCenter">
         <ul className="topList">
           <li className="topListItem">
@@ -52,7 +54,6 @@ export default function TopBar() {
               Gönderi Yayınla !
             </Link>
           </li>
-          
           <i class="fa-solid fa-star"></i>
           <li className="topListItem" onClick={handleLogout}>
             {user && "Çıkış Yap"}
@@ -62,7 +63,7 @@ export default function TopBar() {
       <div className="topRight">
         {user ? (
           <Link to="/settings">
-            <img className="topImg" src={PF+user.profilePic} alt="" />
+            <img className="topImg" src="https://avatars.githubusercontent.com/u/108813428?v=4" alt="" />
           </Link>
         ) : (
           <ul className="topList">

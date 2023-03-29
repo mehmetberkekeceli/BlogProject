@@ -7,8 +7,6 @@ import { config } from "../../config/env";
 
 export default function Write() {
 
-  const [_user] = useAuth()
-
   const [title, setTitle] = useState("");
   const [desc, setDesc] = useState("");
   const [file, setFile] = useState(null);

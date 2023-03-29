@@ -24,6 +24,13 @@ export default function About() {
         <i class="fa-brands fa-square-github"></i>
         </a>
       </div>
+      <div>
+        <p className="text">
+          Profil resmimde ki camper adlı karakterin eğlenceli videosu iyi seyirler.
+          <br />
+        </p>
+        <iframe width="800" height="400" src="https://www.youtube.com/embed/5Cjrp23lBSM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+      </div>
       </div>
   );
 }
