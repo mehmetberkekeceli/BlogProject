@@ -1,9 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 
 namespace BlogLab.Models.Exception
 {
-    [Keyless]
     public class ApiException
     {
         public int StatusCode { get; set; }

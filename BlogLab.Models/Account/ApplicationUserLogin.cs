@@ -1,12 +1,10 @@
-﻿using Microsoft.EntityFrameworkCore;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
 
 namespace BlogLab.Models.Account
 {
-    [Keyless]
     public class ApplicationUserLogin
     {
         [Required(ErrorMessage = "Username is required")]

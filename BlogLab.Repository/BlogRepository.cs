@@ -1,19 +1,16 @@
 ﻿using BlogLab.Models.Blog;
 using Dapper;
 using Microsoft.Extensions.Configuration;
-using Npgsql;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace BlogLab.Repository
 {
-    /// <summary>
-    /// Adding, deleting, updating, etc. The class in which the operations are encoded.
-    /// </summary>
     public class BlogRepository : IBlogRepository
     {
         private readonly IConfiguration _config;
@@ -23,16 +20,11 @@ namespace BlogLab.Repository
             _config = config;
         }
 
-        /// <summary>
-        /// It is the function that completes the delete operation.
-        /// </summary>
-        /// <param name="blogId">It requests the blogId information to be deleted.</param>
-        /// <returns></returns>
         public async Task<int> DeleteAsync(int blogId)
         {
             int affectedRows = 0;
 
-            using (var connection = new NpgsqlConnection(_config.GetConnectionString("DefaultConnection")))
+            using (var connection = new SqlConnection(_config.GetConnectionString("DefaultConnection")))
             {
                 await connection.OpenAsync();
 
@@ -45,16 +37,11 @@ namespace BlogLab.Repository
             return affectedRows;
         }
 
-        /// <summary>
-        /// Get all blog. It will fetch all blog entries.
-        /// </summary>
-        /// <param name="blogPaging">Pagination information</param>
-        /// <returns></returns>
         public async Task<PagedResults<Blog>> GetAllAsync(BlogPaging blogPaging)
         {
             var results = new PagedResults<Blog>();
 
-            using (var connection = new NpgsqlConnection(_config.GetConnectionString("DefaultConnection")))
+            using (var connection = new SqlConnection(_config.GetConnectionString("DefaultConnection")))
             {
                 await connection.OpenAsync();
 
@@ -73,16 +60,12 @@ namespace BlogLab.Repository
 
             return results;
         }
-        /// <summary>
-        /// Returns all the blog information for an account.
-        /// </summary>
-        /// <param name="applicationUserId">user Id</param>
-        /// <returns></returns>
+
         public async Task<List<Blog>> GetAllByUserIdAsync(int applicationUserId)
         {
             IEnumerable<Blog> blogs;
 
-            using (var connection = new NpgsqlConnection(_config.GetConnectionString("DefaultConnection")))
+            using (var connection = new SqlConnection(_config.GetConnectionString("DefaultConnection")))
             {
                 await connection.OpenAsync();
 
@@ -94,15 +77,12 @@ namespace BlogLab.Repository
 
             return blogs.ToList();
         }
-        /// <summary>
-        /// Brings all the famous blogs requested.
-        /// </summary>
-        /// <returns></returns>
+
         public async Task<List<Blog>> GetAllFamousAsync()
         {
             IEnumerable<Blog> famousBlogs;
 
-            using (var connection = new NpgsqlConnection(_config.GetConnectionString("DefaultConnection")))
+            using (var connection = new SqlConnection(_config.GetConnectionString("DefaultConnection")))
             {
                 await connection.OpenAsync();
 
@@ -114,16 +94,12 @@ namespace BlogLab.Repository
 
             return famousBlogs.ToList();
         }
-        /// <summary>
-        /// Returns the record that equals blogId.
-        /// </summary>
-        /// <param name="blogId">req blogId</param>
-        /// <returns></returns>
+
         public async Task<Blog> GetAsync(int blogId)
         {
             Blog blog;
 
-            using (var connection = new NpgsqlConnection(_config.GetConnectionString("DefaultConnection")))
+            using (var connection = new SqlConnection(_config.GetConnectionString("DefaultConnection")))
             {
                 await connection.OpenAsync();
 
@@ -135,12 +111,7 @@ namespace BlogLab.Repository
 
             return blog;
         }
-        /// <summary>
-        /// It should be used for insertion operations.
-        /// </summary>
-        /// <param name="blogCreate">add blog info</param>
-        /// <param name="applicationUserId">add userId info</param>
-        /// <returns></returns>
+
         public async Task<Blog> UpsertAsync(BlogCreate blogCreate, int applicationUserId)
         {
             var dataTable = new DataTable();
@@ -153,7 +124,7 @@ namespace BlogLab.Repository
 
             int? newBlogId;
 
-            using (var connection = new NpgsqlConnection(_config.GetConnectionString("DefaultConnection")))
+            using (var connection = new SqlConnection(_config.GetConnectionString("DefaultConnection")))
             {
                 await connection.OpenAsync();
 

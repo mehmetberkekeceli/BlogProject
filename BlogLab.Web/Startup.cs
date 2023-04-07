@@ -9,19 +9,15 @@ using BlogLab.Models.Account;
 using BlogLab.Models.Settings;
 using BlogLab.Repository;
 using BlogLab.Services;
-using BlogLab.Web.Context;
 using BlogLab.Web.Extensions;
-using CloudinaryDotNet;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 
 namespace BlogLab.Web
@@ -40,11 +36,6 @@ namespace BlogLab.Web
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
-            
-            services.AddDbContext<ApplicationDbContext>(options =>
-options.UseNpgsql(Configuration.GetConnectionString("DefaultConnection")));
-            
-
             services.Configure<CloudinaryOptions>(Configuration.GetSection("CloudinaryOptions"));
 
             services.AddScoped<ITokenService, TokenService>();
@@ -65,9 +56,8 @@ options.UseNpgsql(Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddControllers();
             services.AddCors();
-           
 
-           services.AddAuthentication(options =>
+            services.AddAuthentication(options =>
             {
                 options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
                 options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -99,13 +89,12 @@ options.UseNpgsql(Configuration.GetConnectionString("DefaultConnection")));
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
             }
 
-           app.ConfigureExceptionHandler();
+            app.ConfigureExceptionHandler();
 
             app.UseRouting();
 
@@ -117,28 +106,14 @@ options.UseNpgsql(Configuration.GetConnectionString("DefaultConnection")));
             {
                 app.UseCors();
             }
-            if (env.IsDevelopment())
-            {
-               app.UseSwagger();
-                app.UseSwaggerUI();
-            }
-            else
-            {
-                app.UseDefaultFiles();
-                app.UseStaticFiles();
-            }
-
-
 
             app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
-
                 endpoints.MapControllers();
             });
-           
         }
     }
 }

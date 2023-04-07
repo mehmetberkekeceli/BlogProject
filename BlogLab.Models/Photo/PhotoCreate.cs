@@ -1,11 +1,9 @@
-﻿using Microsoft.EntityFrameworkCore;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace BlogLab.Models.Photo
 {
-    [Keyless]
     public class PhotoCreate
     {
         public string ImageUrl { get; set; }

@@ -1,20 +1,16 @@
 ﻿using BlogLab.Models.BlogComment;
 using Dapper;
 using Microsoft.Extensions.Configuration;
-using Npgsql;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace BlogLab.Repository
 {
-    /// <summary>
-    /// The blog comment creation class.
-    /// It is derived from the class IBlogCommentRepository.
-    /// </summary>
     public class BlogCommentRepository : IBlogCommentRepository
     {
         private readonly IConfiguration _config;
@@ -23,16 +19,12 @@ namespace BlogLab.Repository
         {
             _config = config;
         }
-        /// <summary>
-        /// Blog comment deletion operation function.
-        /// </summary>
-        /// <param name="blogCommentId">Comment Id information to be deleted.</param>
-        /// <returns></returns>
+
         public async Task<int> DeleteAsync(int blogCommentId)
         {
             int affectedRows = 0;
 
-            using (var connection = new NpgsqlConnection(_config.GetConnectionString("DefaultConnection")))
+            using (var connection = new SqlConnection(_config.GetConnectionString("DefaultConnection")))
             {
                 await connection.OpenAsync();
 
@@ -45,16 +37,11 @@ namespace BlogLab.Repository
             return affectedRows;
         }
 
-        /// <summary>
-        ///  Get all blog comment. Returns all comments equal to Blog Id.
-        /// </summary>
-        /// <param name="blogId">Blog Id for which comments are requested.</param>
-        /// <returns></returns>
         public async Task<List<BlogComment>> GetAllAsync(int blogId)
         {
             IEnumerable<BlogComment> blogComments;
 
-            using (var connection = new NpgsqlConnection(_config.GetConnectionString("DefaultConnection")))
+            using (var connection = new SqlConnection(_config.GetConnectionString("DefaultConnection")))
             {
                 await connection.OpenAsync();
 
@@ -66,16 +53,12 @@ namespace BlogLab.Repository
 
             return blogComments.ToList();
         }
-        /// <summary>
-        /// Returns the comment that is equal to blogCommentId.
-        /// </summary>
-        /// <param name="blogCommentId">Requested comment ID</param>
-        /// <returns></returns>
+
         public async Task<BlogComment> GetAsync(int blogCommentId)
         {
             BlogComment blogComment;
 
-            using (var connection = new NpgsqlConnection(_config.GetConnectionString("DefaultConnection")))
+            using (var connection = new SqlConnection(_config.GetConnectionString("DefaultConnection")))
             {
                 await connection.OpenAsync();
 
@@ -87,12 +70,7 @@ namespace BlogLab.Repository
 
             return blogComment;
         }
-        /// <summary>
-        /// Blog comment insertion operation function.
-        /// </summary>
-        /// <param name="blogCommentCreate">Comment information to add.</param>
-        /// <param name="applicationUserId">Id of the user who added the comment.</param>
-        /// <returns></returns>
+
         public async Task<BlogComment> UpsertAsync(BlogCommentCreate blogCommentCreate, int applicationUserId)
         {
             var dataTable = new DataTable();
@@ -109,7 +87,7 @@ namespace BlogLab.Repository
 
             int? newBlogCommentId;
 
-            using (var connection = new NpgsqlConnection(_config.GetConnectionString("DefaultConnection")))
+            using (var connection = new SqlConnection(_config.GetConnectionString("DefaultConnection")))
             {
                 await connection.OpenAsync();
 

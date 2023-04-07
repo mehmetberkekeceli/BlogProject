@@ -1,20 +1,16 @@
 ﻿using BlogLab.Models.Photo;
 using Dapper;
 using Microsoft.Extensions.Configuration;
-using Npgsql;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace BlogLab.Repository
 {
-    /// <summary>
-    /// The photo creation class.
-    /// It is derived from the class IPhotoRepository.
-    /// </summary>
     public class PhotoRepository : IPhotoRepository
     {
         private readonly IConfiguration _config;
@@ -23,16 +19,12 @@ namespace BlogLab.Repository
         {
             _config = config;
         }
-        /// <summary>
-        /// Photo deletion operation function.
-        /// </summary>
-        /// <param name="photoId">photoId information to be deleted.</param>
-        /// <returns></returns>
+
         public async Task<int> DeletetAsync(int photoId)
         {
             int affectedRows = 0;
 
-            using (var connection = new NpgsqlConnection(_config.GetConnectionString("DefaultConnection")))
+            using (var connection = new SqlConnection(_config.GetConnectionString("DefaultConnection")))
             {
                 await connection.OpenAsync();
 
@@ -44,16 +36,12 @@ namespace BlogLab.Repository
 
             return affectedRows;
         }
-        /// <summary>
-        ///  Get all user photo. Returns all comments equal to applicationUserId.
-        /// </summary>
-        /// <param name="applicationUserId">applicationUserId for which photo are requested.</param>
-        /// <returns></returns>
+
         public async Task<List<Photo>> GetAllByUserIdAsync(int applicationUserId)
         {
             IEnumerable<Photo> photos;
 
-            using (var connection = new NpgsqlConnection(_config.GetConnectionString("DefaultConnection")))
+            using (var connection = new SqlConnection(_config.GetConnectionString("DefaultConnection")))
             {
                 await connection.OpenAsync();
 
@@ -67,16 +55,11 @@ namespace BlogLab.Repository
 
         }
 
-        /// <summary>
-        /// Returns the comment that is equal to photoId.
-        /// </summary>
-        /// <param name="photoId">Requested photoId</param>
-        /// <returns></returns>
         public async Task<Photo> GetAsync(int photoId)
         {
             Photo photo;
 
-            using (var connection = new NpgsqlConnection(_config.GetConnectionString("DefaultConnection")))
+            using (var connection = new SqlConnection(_config.GetConnectionString("DefaultConnection")))
             {
                 await connection.OpenAsync();
 
@@ -89,12 +72,6 @@ namespace BlogLab.Repository
             return photo;
         }
 
-        /// <summary>
-        /// Photo insertion operation function.
-        /// </summary>
-        /// <param name="photoCreate">Photo information to add.</param>
-        /// <param name="applicationUserId">Id of the user who added the photo.</param>
-        /// <returns></returns>
         public async Task<Photo> InsertAsync(PhotoCreate photoCreate, int applicationUserId)
         {
             var dataTable = new DataTable();
@@ -106,7 +83,7 @@ namespace BlogLab.Repository
 
             int newPhotoId;
 
-            using (var connection = new NpgsqlConnection(_config.GetConnectionString("DefaultConnection")))
+            using (var connection = new SqlConnection(_config.GetConnectionString("DefaultConnection")))
             {
                 await connection.OpenAsync();
 

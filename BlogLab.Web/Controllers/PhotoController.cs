@@ -72,7 +72,7 @@ namespace BlogLab.Web.Controllers
         }
 
         [Authorize]
-        [HttpDelete("upload")]
+        [HttpDelete("{photoId}")]
         public async Task<ActionResult<int>> Delete(int photoId)
         {
             int applicationUserId = int.Parse(User.Claims.First(i => i.Type == JwtRegisteredClaimNames.NameId).Value);

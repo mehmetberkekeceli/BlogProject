@@ -11,9 +11,6 @@ using System.Threading.Tasks;
 
 namespace BlogLab.Services
 {
-    /// <summary>
-    /// Adding and deleting images business class. In this class, methods derived from IPhotoService class are filled.
-    /// </summary>
     public class PhotoService : IPhotoService
     {
         private readonly Cloudinary _cloudinary;
@@ -24,12 +21,7 @@ namespace BlogLab.Services
 
             _cloudinary = new Cloudinary(account);
         }
-        /// <summary>
-        /// Image insertion job function.
-        /// Works async way.
-        /// </summary>
-        /// <param name="file">Takes an image file as input parameter.</param>
-        /// <returns>Requires transaction result return.</returns>
+
         public async Task<ImageUploadResult> AddPhotoAsync(IFormFile file)
         {
             var uploadResult = new ImageUploadResult();
@@ -50,12 +42,7 @@ namespace BlogLab.Services
 
             return uploadResult;
         }
-        /// <summary>
-        /// Image deletion job function.
-        /// Works async way.
-        /// </summary>
-        /// <param name="file">The pictureId information to be deleted is required./param>
-        /// <returns>Requires transaction result return.</returns>
+
         public async Task<DeletionResult> DeletePhotoAsync(string publicId)
         {
             var deletionParams = new DeletionParams(publicId);
