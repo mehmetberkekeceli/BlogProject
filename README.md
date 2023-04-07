@@ -3,7 +3,7 @@
 
 ----------------------MBRKCL--------------------
 
-I created a Full Stack blog site using Backend .NET, Frontend React.
+I created a Full Stack blog site using Backend ASP.NET Core, Frontend React.
 
 • You can login and Register with JWT.
 
