@@ -24,7 +24,7 @@ namespace BlogLab.Web.Controllers
             _photoRepository = photoRepository;
         }
 
-        [Authorize]
+        
         [HttpPost]
         public async Task<ActionResult<Blog>> Create(BlogCreate blogCreate)
         {
@@ -77,7 +77,7 @@ namespace BlogLab.Web.Controllers
             return Ok(blogs);
         }
 
-        [Authorize]
+        
         [HttpDelete("{blogId}")]
         public async Task<ActionResult<int>> Delete(int blogId)
         {
