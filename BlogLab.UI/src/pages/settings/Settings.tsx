@@ -33,11 +33,11 @@ export default function Settings(): JSX.Element {
       data.append("file", file);
       updatedUser.profilePic = filename;
       try {
-        await axios.post(config.APP_URL + "/api/Blog/user/{NextNewApplicationUserId}", data);
+        await axios.post(config.APP_URL + "/api/Account/register", data);
       } catch (err) {}
     }
     try {
-      const res = await axios.put(config.APP_URL+"/api/Blog/user" + user?._id, updatedUser);
+      const res = await axios.put(config.APP_URL+"/api/Blog/user/{{NextNewApplicationUserId}}" + user?._id, updatedUser);
       setSuccess(true);
       dispatch({ type: "UPDATE_SUCCESS", payload: res.data });
     } catch (err) {

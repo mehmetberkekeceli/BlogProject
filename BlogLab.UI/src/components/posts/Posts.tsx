@@ -6,6 +6,10 @@ interface PostsProps {
 }
 
 export default function Posts({ posts }: PostsProps) {
+  if (!Array.isArray(posts)) {
+    return <div>No posts found!</div>;
+  }
+
   return (
     <div className="posts">
       {posts.map((p) => (

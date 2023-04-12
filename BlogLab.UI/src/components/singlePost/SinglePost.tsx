@@ -46,7 +46,7 @@ export default function SinglePost() {
 
   const handleDelete = async () => {
     try {
-      await axios.delete(`${config.APP_URL}/api/Blog/${post._id}`, {
+      await axios.delete(`${config.APP_URL}/api/Blog/{{NextNewBlogId}}${post._id}`, {
         data: { username: user.username },
       });
       window.location.replace("/");
@@ -55,7 +55,7 @@ export default function SinglePost() {
 
   const handleUpdate = async () => {
     try {
-      await axios.put(`${config.APP_URL}/api/Blog/${post._id}`, {
+      await axios.put(`${config.APP_URL}/api/Blog/{{NextNewBlogId}}${post._id}`, {
         username: user.username,
         title,
         desc,

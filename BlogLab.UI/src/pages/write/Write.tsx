@@ -32,6 +32,7 @@ export default function Write() {
       data.append("file", file);
       newPost.photo = filename;
       try {
+        //const res = await axios.post(`${config.APP_URL}api/Account/register`, 
         await axios.post(config.APP_URL + "/api/Blog", data);
       } catch (err) {}
     }
