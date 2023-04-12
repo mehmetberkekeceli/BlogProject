@@ -3,29 +3,28 @@ import Sidebar from "../../components/sidebar/Sidebar";
 import { useContext, useState } from "react";
 import { Context } from "../../context/Context";
 import axios from "axios";
-import { useAuth } from "../../hooks/authHook";
+//import { useAuth } from "../../hooks/authHook";
 import { config } from "../../config/env";
 
-export default function Settings() {
-
-  const [file, setFile] = useState(null);
-  const [username, setUsername] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [success, setSuccess] = useState(false);
+export default function Settings(): JSX.Element {
+  const [file, setFile] = useState<File | null>(null);
+  const [username, setUsername] = useState<string>("");
+  const [email, setEmail] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
+  const [success, setSuccess] = useState<boolean>(false);
 
   const { user, dispatch } = useContext(Context);
-  const PF = "http://localhost:5000/images/"
+  const PF: string = "http://localhost:5000/images/";
 
-  const handleSubmit = async (e) => {
-
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     dispatch({ type: "UPDATE_START" });
     const updatedUser = {
-      userId: user._id,
+      userId: user?._id,
       username,
       email,
       password,
+      profilePic: user.profilePic
     };
     if (file) {
       const data = new FormData();
@@ -38,7 +37,7 @@ export default function Settings() {
       } catch (err) {}
     }
     try {
-      const res = await axios.put(config.APP_URL+"/api/Blog/user" + user._id, updatedUser);
+      const res = await axios.put(config.APP_URL+"/api/Blog/user" + user?._id, updatedUser);
       setSuccess(true);
       dispatch({ type: "UPDATE_SUCCESS", payload: res.data });
     } catch (err) {
@@ -73,7 +72,7 @@ export default function Settings() {
               type="file"
               id="fileInput"
               style={{ display: "none" }}
-              onChange={(e) => setFile(e.target.files[0])}
+              onChange={(e) => setFile(e.target.files?.[0] || null)}
             />
           </div>
           <label>Kullanıcı Adı</label>

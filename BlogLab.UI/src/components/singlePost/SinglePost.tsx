@@ -1,33 +1,42 @@
 import axios from "axios";
 import { useContext, useEffect, useState } from "react";
-import { useLocation } from "react-router";
+import { useLocation } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { config } from "../../config/env";
 import { Context } from "../../context/Context";
 import "./singlePost.css";
 
+interface Post {
+  _id: string;
+  username: string;
+  title: string;
+  desc: string;
+  photo: string;
+  createdAt: Date;
+}
+
 export default function SinglePost() {
   const location = useLocation();
   const path = location.pathname.split("/")[2];
-  const [post, setPost] = useState({});
+  const [post, setPost] = useState<Post>({ _id: "", username: "", title: "", desc: "", photo: "", createdAt: new Date() });
   const PF = "http://localhost:5000/images/";
   const { user } = useContext(Context);
   const [title, setTitle] = useState("");
   const [desc, setDesc] = useState("");
   const [updateMode, setUpdateMode] = useState(false);
   const [comment, setComment] = useState("");
-  const [comments, setComments] = useState([]);
+  const [comments, setComments] = useState<string[]>([]);
 
   const onClickHandler = () => {
     setComments((comments) => [...comments, comment]);
   };
-  const onChangeHandler = (e) => {
+  const onChangeHandler = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setComment(e.target.value);
   };
  
   useEffect(() => {
     const getPost = async () => {
-      const res = await axios.get(config.APP_URL+"/api/Blog" + path);
+      const res = await axios.get<Post>(`${config.APP_URL}/api/Blog${path}`);
       setPost(res.data);
       setTitle(res.data.title);
       setDesc(res.data.desc);
@@ -37,7 +46,7 @@ export default function SinglePost() {
 
   const handleDelete = async () => {
     try {
-      await axios.delete(config.APP_URL+`/api/Blog/{NextNewBlogId}`, {
+      await axios.delete(`${config.APP_URL}/api/Blog/${post._id}`, {
         data: { username: user.username },
       });
       window.location.replace("/");
@@ -46,7 +55,7 @@ export default function SinglePost() {
 
   const handleUpdate = async () => {
     try {
-      await axios.put(config.APP_URL + `/api/Blog/${post._id}`, {
+      await axios.put(`${config.APP_URL}/api/Blog/${post._id}`, {
         username: user.username,
         title,
         desc,

@@ -7,28 +7,26 @@ import { useLocation } from "react-router";
 import Layout from "../../components/layout/layout";
 import { config } from "../../config/env";
 
-export default function Home() {
-  const [posts, setPosts] = useState([]);
+export default function Home(): JSX.Element {
+  const [posts, setPosts] = useState<any[]>([]);
   const { search } = useLocation();
 
   useEffect(() => {
     const fetchPosts = async () => {
-      const res = await axios.get(config.APP_URL+"/api/Blog" + search);
+      const res = await axios.get(`${config.APP_URL}/api/Blog${search}`);
       setPosts(res.data);
     };
     fetchPosts();
   }, [search]);
+
   return (
     <>
-    <Layout>
-
-    
-      <div className="home">
-        <Posts posts={posts} />
-        <Sidebar />
-      </div>
-
-    </Layout>
+      <Layout>
+        <div className="home">
+          <Posts posts={posts} />
+          <Sidebar />
+        </div>
+      </Layout>
     </>
   );
 }

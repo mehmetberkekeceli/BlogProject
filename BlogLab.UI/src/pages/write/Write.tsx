@@ -1,43 +1,60 @@
-import { useContext, useState } from "react";
+import { useContext, useState, ChangeEvent, FormEvent } from "react";
 import "./write.css";
 import axios from "axios";
 import { Context } from "../../context/Context";
-import { useAuth } from "../../hooks/authHook";
+//import { useAuth } from "../../hooks/authHook";
 import { config } from "../../config/env";
 
-export default function Write() {
+interface NewPost {
+  username: string;
+  title: string;
+  desc: string;
+  photo?: string;
+}
 
+export default function Write() {
   const [title, setTitle] = useState("");
   const [desc, setDesc] = useState("");
-  const [file, setFile] = useState(null);
+  const [file, setFile] = useState<File | null>(null);
   const { user } = useContext(Context);
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    const newPost = {
+    const newPost: NewPost = {
       username: user.username,
       title,
       desc,
     };
     if (file) {
-      const data =new FormData();
+      const data = new FormData();
       const filename = Date.now() + file.name;
       data.append("name", filename);
       data.append("file", file);
       newPost.photo = filename;
       try {
-        await axios.post(config.APP_URL +"/api/Blog", data);
+        await axios.post(config.APP_URL + "/api/Blog", data);
       } catch (err) {}
     }
     try {
       const res = await axios.post(config.APP_URL + "/api/Blog", newPost);
-      window.location.replace(config.APP_URL+ "/api/Blog" + res.data._id);
+      window.location.replace(config.APP_URL + "/api/Blog" + res.data._id);
     } catch (err) {}
   };
+
+  const handleFileChange = (e: ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files) {
+      setFile(e.target.files[0]);
+    }
+  };
+
   return (
     <div className="write">
       {file && (
-        <img className="writeImg" src={URL.createObjectURL(file)} alt="" />
+        <img
+          className="writeImg"
+          src={URL.createObjectURL(file)}
+          alt=""
+        />
       )}
       <form className="writeForm" onSubmit={handleSubmit}>
         <div className="writeFormGroup">
@@ -48,22 +65,21 @@ export default function Write() {
             type="file"
             id="fileInput"
             style={{ display: "none" }}
-            onChange={(e) => setFile(e.target.files[0])}
+            onChange={handleFileChange}
           />
           <input
             type="text"
             placeholder="Yazı"
             className="writeInput"
             autoFocus={true}
-            onChange={e=>setTitle(e.target.value)}
+            onChange={(e) => setTitle(e.target.value)}
           />
         </div>
         <div className="writeFormGroup">
           <textarea
             placeholder="Hikayeni Anlat..."
-            type="text"
             className="writeInput writeText"
-            onChange={e=>setDesc(e.target.value)}
+            onChange={(e) => setDesc(e.target.value)}
           ></textarea>
         </div>
         <button className="writeSubmit" type="submit">
@@ -73,7 +89,3 @@ export default function Write() {
     </div>
   );
 }
-
-
-
-

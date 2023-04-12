@@ -19,7 +19,7 @@ JWT,EF,Cloudinary,Identity
 
 -FRONTEND-
 
-React Redux,React Hooks,Context API
+React Redux,React Hooks,Context API and TypeScript
 ![Ekran Görüntüsü (1)](https://user-images.githubusercontent.com/108813428/228577151-d5bab59e-8756-41d1-843d-0afe99296285.png)
 ![Ekran Görüntüsü (2)](https://user-images.githubusercontent.com/108813428/228577174-2368859e-38e1-496c-83f7-082b04dcbc24.png)
 ![Ekran Görüntüsü (3)](https://user-images.githubusercontent.com/108813428/228577182-c0414ebf-266d-41ba-a868-a3bbf7891379.png)
