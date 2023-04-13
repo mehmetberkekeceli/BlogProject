@@ -9,7 +9,7 @@ const { user, dispatch } = useContext(Context);
 //const PF = "http://localhost:5000/images/";
 
 const handleLogout = () => {
-dispatch({ type: "Çıkış Yap!" });
+dispatch({ type: "LOGOUT" });
 };
 
 return (

@@ -10,6 +10,7 @@ interface FormInputs {
   username: string;
   email: string;
   password: string;
+  fullName: string;
 }
 
 export default function Register() {
@@ -43,6 +44,16 @@ export default function Register() {
     <div className="register">
       <span className="registerTitle">Kayıt Ol!</span>
       <form className="registerForm" onSubmit={handleSubmit(onSubmit)}>
+      <label>Ad</label>
+        <input
+        {...register("fullName", {
+          required: "Bu alanın doldurulması zorunludur",
+        })}
+          type="text"
+          className="registerInput"
+          placeholder="Adınızı Giriniz..."
+        />
+        {errors.fullName && <div>{errors.fullName.message}</div>}
         <label>Kullanıcı Adı</label>
         <input
           {...register("username", {
