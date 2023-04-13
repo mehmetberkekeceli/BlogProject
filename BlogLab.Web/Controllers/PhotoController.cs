@@ -30,7 +30,7 @@ namespace BlogLab.Web.Controllers
             _photoService = photoService;
         }
 
-        [Authorize]
+     
         [HttpPost]
         public async Task<ActionResult<Photo>> UploadPhoto(IFormFile file)
         {
@@ -52,7 +52,7 @@ namespace BlogLab.Web.Controllers
             return Ok(photo);
         }
 
-        [Authorize]
+     
         [HttpGet]
         public async Task<ActionResult<List<Photo>>> GetByApplicationUserId()
         {
@@ -71,7 +71,7 @@ namespace BlogLab.Web.Controllers
             return Ok(photo);
         }
 
-        [Authorize]
+      
         [HttpDelete("{photoId}")]
         public async Task<ActionResult<int>> Delete(int photoId)
         {

@@ -12,9 +12,8 @@ export default function Settings(): JSX.Element {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [success, setSuccess] = useState<boolean>(false);
-
   const { user, dispatch } = useContext(Context);
-  const PF: string = "http://localhost:5000/images/";
+  //const PF: string = "http://localhost:5000/images/";
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -62,7 +61,7 @@ export default function Settings(): JSX.Element {
           <label>Profil Fotoğrafı</label>
           <div className="settingsPP">
             <img
-              src={file ? URL.createObjectURL(file) : PF+user?.profilePic}
+              src="https://avatars.githubusercontent.com/u/108813428?v=4"//{file ? URL.createObjectURL(file) : PF+user?.profilePic}
               alt=""
             />
             <label htmlFor="fileInput">

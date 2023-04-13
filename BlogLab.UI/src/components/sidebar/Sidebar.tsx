@@ -23,7 +23,7 @@ export default function Sidebar() {
     <div className="sidebar">
       <div className="sidebarItem">
         <span className="sidebarTitle">Hakkımda</span>
-        <img
+        <img className="ImgSide"
           src="https://avatars.githubusercontent.com/u/108813428?v=4"
           alt=""
         />

@@ -6,16 +6,16 @@ import { config } from "../../config/env";
 import { useHistory } from "react-router-dom";
 
 interface NewPost {
-  BlogId? :number;
-  username?: string;
-  title: string;
-  desc: string;
-  photo?: string;
+  BlogId: number;
+  Title: string;
+  Content: string;
+  ImageUrl?: string;
+  Publicid?: string;
 }
 
 export default function Write() {
   const [title, setTitle] = useState("");
-  const [desc, setDesc] = useState("");
+  const [content, setContent] = useState("");
   const [file, setFile] = useState<File | null>(null);
   const { user } = useContext(Context);
   const history = useHistory();
@@ -27,29 +27,33 @@ export default function Write() {
       return;
     }
     const newPost: NewPost = {
-      username: user.username,
-      title,
-      desc,
+      Title: title,
+      Content: content,
+      BlogId: -1
     };
     if (file) {
       const data = new FormData();
       const filename = Date.now() + file.name;
       data.append("name", filename);
       data.append("file", file);
-      newPost.photo = filename;
+      newPost.ImageUrl = filename;
       try {
         const res = await axios.post(config.APP_URL + "/api/Photo", data, {
           headers: {
             "Content-Type": "multipart/form-data",
           },
         });
-        newPost.photo = res.data.secure_url;
+        newPost.ImageUrl = res.data.secure_url;
       } catch (err) {
         console.error(err);
       }
     }
     try {
-      const res = await axios.post(config.APP_URL + "/api/Blog", newPost);
+      const res = await axios.post(config.APP_URL + "/api/Blog", newPost, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
       history.push("/api/Blog/" + res.data._id);
     } catch (err) {
       console.error(err);
@@ -93,7 +97,7 @@ export default function Write() {
           <textarea
             placeholder="Hikayeni Anlat..."
             className="writeInput writeText"
-            onChange={(e) => setDesc(e.target.value)}
+            onChange={(e) => setContent(e.target.value)}
           ></textarea>
         </div>
         <button className="writeSubmit" type="submit">

@@ -7,7 +7,7 @@ interface PostsProps {
 
 export default function Posts({ posts }: PostsProps) {
   if (!Array.isArray(posts)) {
-    return <div>No posts found!</div>;
+    return <div>Post Bulunamadı!</div>;
   }
 
   return (

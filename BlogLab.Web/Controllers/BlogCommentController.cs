@@ -22,7 +22,7 @@ namespace BlogLab.Web.Controllers
             _blogCommentRepository = blogCommentRepository;
         }
 
-        [Authorize]
+        
         [HttpPost]
         public async Task<ActionResult<BlogComment>> Create(BlogCommentCreate blogCommentCreate)
         {
@@ -41,7 +41,6 @@ namespace BlogLab.Web.Controllers
             return blogComments;
         }
 
-        [Authorize]
         [HttpDelete("{blogCommentId}")]
         public async Task<ActionResult<int>> Delete(int blogCommentId)
         {
