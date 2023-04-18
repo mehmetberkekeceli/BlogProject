@@ -26,7 +26,7 @@ function App(): JSX.Element {
         <Route path="/write">{user ? <Write /> : <Login />}</Route>
         <Route path="/settings">{user ? <Settings /> : <Login />}</Route>
         <Route path="/about">{<About />}</Route>
-        <Route path="/post/:postId">
+        <Route path="/post/:blogId">
           <Single />
         </Route>
       </Switch>

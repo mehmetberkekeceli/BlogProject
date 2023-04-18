@@ -10,7 +10,7 @@ interface FormInputs {
   username: string;
   email: string;
   password: string;
-  fullName: string;
+  fullname: string;
 }
 
 export default function Register() {
@@ -30,7 +30,8 @@ export default function Register() {
 
     setError(false);
     try {
-      const res = await axios.post(`${config.APP_URL}api/Account/register`, {
+      const res = await axios.post(`${config.APP_URL}/api/Account/register`, {
+        fullname : data.fullname,
         username: data.username,
         email: data.email,
         password: data.password,
@@ -46,14 +47,14 @@ export default function Register() {
       <form className="registerForm" onSubmit={handleSubmit(onSubmit)}>
       <label>Ad</label>
         <input
-        {...register("fullName", {
+        {...register("fullname", {
           required: "Bu alanın doldurulması zorunludur",
         })}
           type="text"
           className="registerInput"
           placeholder="Adınızı Giriniz..."
         />
-        {errors.fullName && <div>{errors.fullName.message}</div>}
+        {errors.fullname && <div>{errors.fullname.message}</div>}
         <label>Kullanıcı Adı</label>
         <input
           {...register("username", {

@@ -6,16 +6,16 @@ import { config } from "../../config/env";
 import { useHistory } from "react-router-dom";
 
 interface NewPost {
-  BlogId: number;
+  BlogId:number;
   Title: string;
   Content: string;
-  ImageUrl?: string;
-  Publicid?: string;
+  ImageUrl:string | null;
+  PublicId:string | null;
 }
 
 export default function Write() {
-  const [title, setTitle] = useState("");
-  const [content, setContent] = useState("");
+  const [Title, setTitle] = useState("");
+  const [Content, setContent] = useState("");
   const [file, setFile] = useState<File | null>(null);
   const { user } = useContext(Context);
   const history = useHistory();
@@ -27,16 +27,18 @@ export default function Write() {
       return;
     }
     const newPost: NewPost = {
-      Title: title,
-      Content: content,
-      BlogId: -1
+      BlogId: -1,
+      Title: Title,
+      Content: Content,
+      ImageUrl:null,
+      PublicId:null
     };
     if (file) {
       const data = new FormData();
       const filename = Date.now() + file.name;
       data.append("name", filename);
       data.append("file", file);
-      newPost.ImageUrl = filename;
+       newPost.ImageUrl = filename;
       try {
         const res = await axios.post(config.APP_URL + "/api/Photo", data, {
           headers: {
@@ -44,19 +46,27 @@ export default function Write() {
           },
         });
         newPost.ImageUrl = res.data.secure_url;
-      } catch (err) {
+            } catch (err) {
         console.error(err);
       }
     }
     try {
-      const res = await axios.post(config.APP_URL + "/api/Blog", newPost, {
-        headers: {
-          "Content-Type": "application/json",
-        },
+      const res = await axios.post(`${config.APP_URL}/api/Blog`,{
+        BlogId : newPost.BlogId,
+        Title : newPost.Title,
+        Content : newPost.Content,
+        ImageUrl : newPost.ImageUrl,
+        PublicId : newPost.PublicId
       });
-      history.push("/api/Blog/" + res.data._id);
-    } catch (err) {
-      console.error(err);
+      history.push(`/post/${res.data.blogId}`);
+    } catch (error) {
+      if (axios.isAxiosError(error)) {
+    console.log("Axios Error:", error.message);
+    console.log("Axios Request:", error.config);
+    console.log("Axios Response:", error.response);
+  }else {
+    console.log(error)
+  }
     }
   };
 
@@ -65,6 +75,7 @@ export default function Write() {
       setFile(e.target.files[0]);
     }
   };
+
   return (
     <div className="write">
       {file && (
@@ -87,18 +98,20 @@ export default function Write() {
           />
           <input
             type="text"
-            placeholder="Yazı"
+            placeholder="Başlık Giriniz..."
             className="writeInput"
             autoFocus={true}
+            value={Title}
             onChange={(e) => setTitle(e.target.value)}
           />
         </div>
         <div className="writeFormGroup">
-          <textarea
-            placeholder="Hikayeni Anlat..."
-            className="writeInput writeText"
-            onChange={(e) => setContent(e.target.value)}
-          ></textarea>
+        <textarea
+  placeholder="İçeriği giriniz..."
+  className="writeInput writeText"
+  value={Content}
+  onChange={(e: ChangeEvent<HTMLTextAreaElement>) => setContent(e.target.value)}
+  />
         </div>
         <button className="writeSubmit" type="submit">
           Yayınla!

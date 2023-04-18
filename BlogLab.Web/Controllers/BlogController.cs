@@ -23,12 +23,11 @@ namespace BlogLab.Web.Controllers
             _blogRepository = blogRepository;
             _photoRepository = photoRepository;
         }
-
-      
+       
         [HttpPost]
         public async Task<ActionResult<Blog>> Create(BlogCreate blogCreate)
         {
-            int applicationUserId = int.Parse(User.Claims.First(i => i.Type == JwtRegisteredClaimNames.NameId).Value);
+            int applicationUserId = 1;
 
             if (blogCreate.PhotoId.HasValue)
             {
@@ -44,6 +43,7 @@ namespace BlogLab.Web.Controllers
 
             return Ok(blog);
         }
+
 
         [HttpGet]
         public async Task<ActionResult<PagedResults<Blog>>> GetAll([FromQuery] BlogPaging blogPaging)
@@ -77,11 +77,10 @@ namespace BlogLab.Web.Controllers
             return Ok(blogs);
         }
 
-      
         [HttpDelete("{blogId}")]
         public async Task<ActionResult<int>> Delete(int blogId)
         {
-            int applicationUserId = int.Parse(User.Claims.First(i => i.Type == JwtRegisteredClaimNames.NameId).Value);
+            int applicationUserId = 1;
 
             var foundBlog = await _blogRepository.GetAsync(blogId);
 

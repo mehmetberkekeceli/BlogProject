@@ -30,11 +30,10 @@ namespace BlogLab.Web.Controllers
             _photoService = photoService;
         }
 
-     
         [HttpPost]
         public async Task<ActionResult<Photo>> UploadPhoto(IFormFile file)
         {
-            int applicationUserId = int.Parse(User.Claims.First(i => i.Type == JwtRegisteredClaimNames.NameId).Value);
+            int applicationUserId = 1;
 
             var uploadResult = await _photoService.AddPhotoAsync(file);
 
@@ -52,11 +51,10 @@ namespace BlogLab.Web.Controllers
             return Ok(photo);
         }
 
-     
         [HttpGet]
         public async Task<ActionResult<List<Photo>>> GetByApplicationUserId()
         {
-            int applicationUserId = int.Parse(User.Claims.First(i => i.Type == JwtRegisteredClaimNames.NameId).Value);
+            int applicationUserId = 1;
 
             var photos = await _photoRepository.GetAllByUserIdAsync(applicationUserId);
 
@@ -71,11 +69,10 @@ namespace BlogLab.Web.Controllers
             return Ok(photo);
         }
 
-      
         [HttpDelete("{photoId}")]
         public async Task<ActionResult<int>> Delete(int photoId)
         {
-            int applicationUserId = int.Parse(User.Claims.First(i => i.Type == JwtRegisteredClaimNames.NameId).Value);
+            int applicationUserId = 1;
 
             var foundPhoto = await _photoRepository.GetAsync(photoId);
 

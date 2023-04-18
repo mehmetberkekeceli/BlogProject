@@ -36,7 +36,7 @@ export default function Settings(): JSX.Element {
       } catch (err) {}
     }
     try {
-      const res = await axios.put(config.APP_URL+"/api/Blog/user/{{NextNewApplicationUserId}}" + user?._id, updatedUser);
+      const res = await axios.post(config.APP_URL+"/api/Account/register" + user?._id, updatedUser);
       setSuccess(true);
       dispatch({ type: "UPDATE_SUCCESS", payload: res.data });
     } catch (err) {
@@ -54,14 +54,13 @@ export default function Settings(): JSX.Element {
     <div className="settings">
       <div className="settingsWrapper">
         <div className="settingsTitle">
-          <span className="settingsUpdateTitle">Hesabını Güncelle!</span>
-          <span className="settingsDeleteTitle">Hesabını Sil!</span>
+          <span className="settingsUpdateTitle">Profiliniz: </span>
         </div>
         <form className="settingsForm" onSubmit={handleSubmit}>
           <label>Profil Fotoğrafı</label>
           <div className="settingsPP">
             <img
-              src="https://avatars.githubusercontent.com/u/108813428?v=4"//{file ? URL.createObjectURL(file) : PF+user?.profilePic}
+              src="https://avatars.githubusercontent.com/u/108813428?v=4"
               alt=""
             />
             <label htmlFor="fileInput">

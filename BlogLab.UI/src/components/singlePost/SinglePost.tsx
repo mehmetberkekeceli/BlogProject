@@ -7,40 +7,50 @@ import { Context } from "../../context/Context";
 import "./singlePost.css";
 
 interface Post {
-  _id: string;
-  username: string;
+  blogId: number;
   title: string;
-  desc: string;
-  photo: string;
+  content: string;
+  applicationUserId:number,
+  username : string,
+  publishDate: Date,
+  updateDate:Date,
+  deleteConfirm:boolean,
+  photoId: number;
   createdAt: Date;
 }
 
 interface Comment {
-  _id: string;
-  postId: string;
-  username: string;
-  text: string;
-  createdAt: Date;
+  blogCommentId: number,
+  blogId: number,
+  content: string,
+  parentBlogCommentId?: number
 }
 
 export default function SinglePost() {
   const location = useLocation();
   const path = location.pathname.split("/")[2];
-  const [post, setPost] = useState<Post>({ _id: "", username: "", title: "", desc: "", photo: "", createdAt: new Date() });
+  const [post, setPost] = useState<Post>({ blogId: -1,
+    username: "",
+    title: "",
+    content: "",
+    photoId: 0,
+    createdAt: new Date(),
+    applicationUserId: 0,
+    publishDate: new Date(),
+    updateDate: new Date(),
+    deleteConfirm: false, });
   const PF = "http://localhost:5000/images/";
   const { user } = useContext(Context);
   const [title, setTitle] = useState("");
-  const [desc, setDesc] = useState("");
-  const [updateMode, setUpdateMode] = useState(false);
+  const [content, setContent] = useState("");
+  const [updateMode] = useState(false);
   const [comment, setComment] = useState("");
   const [comments, setComments] = useState<Comment[]>([]);
 
   const onClickHandler = async () => {
     try {
       const res: AxiosResponse<Comment> = await axios.post(`${config.APP_URL}/api/BlogComment`, {
-        username: user?.username,
-        text: comment,
-        postId: post._id,
+       
       });
       setComments((prevComments) => [...prevComments, res.data]);
       setComment("");
@@ -58,13 +68,13 @@ export default function SinglePost() {
       const res = await axios.get<Post>(`${config.APP_URL}/api/Blog/${path}`);
       setPost(res.data);
       setTitle(res.data.title);
-      setDesc(res.data.desc);
+      setContent(res.data.content);
     };
     getPost();
   
     const fetchComments = async () => {
       try {
-        const res: AxiosResponse<Comment[]> = await axios.get(`${config.APP_URL}/api/BlogComment/{{NextNewBlogId}}?postId=${post._id}`);
+        const res: AxiosResponse<Comment[]> = await axios.get(`${config.APP_URL}/api/BlogComment/{{NextNewBlogId}}?postId=${post.blogId}`);
         setComments(res.data);
       } catch (err) {
         console.log(err);
@@ -72,7 +82,7 @@ export default function SinglePost() {
     }
   
     fetchComments();
-  }, [path, post._id]);
+  }, [path, post.blogId]);
   
 
   useEffect(() => {
@@ -80,40 +90,26 @@ export default function SinglePost() {
       const res = await axios.get<Post>(`${config.APP_URL}/api/Blog/${path}`);
       setPost(res.data);
       setTitle(res.data.title);
-      setDesc(res.data.desc);
+      setContent(res.data.content);
     };
     getPost();
   }, [path]);
 
   const handleDelete = async () => {
     try {
-      await axios.delete(`${config.APP_URL}/api/Blog/${post._id}`, {
-        data: { username: user?.username },
+      await axios.delete(`${config.APP_URL}/api/Blog/${post.blogId}`, {
+        data: { post },
       });
       window.location.replace("/");
     } catch (err) {
       console.log(err);
     }
   };
-
-  const handleUpdate = async () => {
-    try {
-      await axios.put(`${config.APP_URL}/api/Blog/${post._id}`, {
-        username: user?.username,
-        title,
-        desc,
-      });
-      setUpdateMode(false);
-    } catch (err) {
-      console.log(err);
-    }
-  };
-
   return (
     <div className="singlePost">
     <div className="singlePostWrapper">
-      {post.photo && (
-        <img src={PF + post.photo} alt="" className="singlePostImg" />
+      {post.photoId && (
+        <img src={PF + post.photoId} alt="" className="singlePostImg" />
       )}
       {updateMode ? (
         <input
@@ -128,10 +124,6 @@ export default function SinglePost() {
           {title}
           {post.username === user?.username && (
             <div className="singlePostEdit">
-              <i
-                className="singlePostIcon far fa-edit"
-                onClick={() => setUpdateMode(true)}
-              ></i>
               <i
                 className="singlePostIcon far fa-trash-alt"
                 onClick={handleDelete}
@@ -154,16 +146,11 @@ export default function SinglePost() {
       {updateMode ? (
         <textarea
           className="singlePostDescInput"
-          value={desc}
-          onChange={(e) => setDesc(e.target.value)}
+          value={content}
+          onChange={(e) => setContent(e.target.value)}
         />
       ) : (
-        <p className="singlePostDesc">{desc}</p>
-      )}
-      {updateMode && (
-        <button className="singlePostButton" onClick={handleUpdate}>
-          Güncelle
-        </button>
+        <p className="singlePostDesc">{content}</p>
       )}
       <div className="main-container">
         {comments.map((text) => (

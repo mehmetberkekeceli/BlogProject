@@ -3,28 +3,38 @@ import { Link } from "react-router-dom";
 
 interface PostProps {
   post: {
-    _id: string;
-    photo: string;
-    categories: { name: string }[];
+    blogId: string;
     title: string;
+    content: string;
+    applicationUserId:number,
+    username : string,
+    publishDate: Date,
+    updateDate:Date,
+    deleteConfirm:boolean,
+    photoId: number;
+    categories: { name: string }[];
     createdAt: string;
-    desc: string;
   };
 }
 export type PostType = {
-  _id: string;
-  title: string;
-  desc: string;
-  photo: string;
-  categories: { _id: string; name: string }[];
-  createdAt: string;
+   blogId: string;
+    title: string;
+    content: string;
+    applicationUserId:number,
+    username : string,
+    publishDate: Date,
+    updateDate:Date,
+    deleteConfirm:boolean,
+    photoId: number;
+    categories: { blogId: string; name: string }[];
+    createdAt: string;
 };
 
 export default function Post({ post }: PostProps) {
   const PF = "http://localhost:5000/images/";
   return (
     <div className="post">
-      {post.photo && <img className="postImg" src={PF + post.photo} alt="" />}
+      {post.photoId && <img className="postImg" src={PF + post.photoId} alt="" />}
       <div className="postInfo">
         <div className="postCats">
           {post.categories.map((c) => (
@@ -33,7 +43,7 @@ export default function Post({ post }: PostProps) {
             </span>
           ))}
         </div>
-        <Link to={`/post/${post._id}`} className="link">
+        <Link to={`/post/${post.blogId}`} className="link">
           <span className="postTitle">{post.title}</span>
         </Link>
         <hr />
@@ -41,7 +51,7 @@ export default function Post({ post }: PostProps) {
           {new Date(post.createdAt).toDateString()}
         </span>
       </div>
-      <p className="postDesc">{post.desc}</p>
+      <p className="postContent">{post.content}</p>
     </div>
   );
 }
