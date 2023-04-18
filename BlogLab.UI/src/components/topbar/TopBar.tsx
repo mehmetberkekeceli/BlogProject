@@ -6,7 +6,6 @@ import "./topbar.css";
 
 export default function TopBar(): JSX.Element {
 const { user, dispatch } = useContext(Context);
-//const PF = "http://localhost:5000/images/";
 
 const handleLogout = () => {
 dispatch({ type: "LOGOUT" });
@@ -63,9 +62,7 @@ Gönderi Yayınla !
 </div>
 <div className="topRight">
 {user ? (
-<Link to="/settings">
 <img className="topImg" src="https://avatars.githubusercontent.com/u/108813428?v=4" alt="" />
-</Link>
 ) : (
 <ul className="topList">
 <li className="topListItem">

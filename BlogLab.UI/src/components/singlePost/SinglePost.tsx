@@ -1,7 +1,6 @@
-import axios, { AxiosResponse } from "axios";
+import axios from "axios";
 import { useContext, useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
-import { Link } from "react-router-dom";
+import { useLocation, Link } from "react-router-dom";
 import { config } from "../../config/env";
 import { Context } from "../../context/Context";
 import "./singlePost.css";
@@ -10,26 +9,35 @@ interface Post {
   blogId: number;
   title: string;
   content: string;
-  applicationUserId:number,
-  username : string,
-  publishDate: Date,
-  updateDate:Date,
-  deleteConfirm:boolean,
+  applicationUserId: number;
+  username: string;
+  publishDate: Date;
+  updateDate: Date;
+  deleteConfirm: boolean;
   photoId: number;
   createdAt: Date;
 }
 
 interface Comment {
-  blogCommentId: number,
-  blogId: number,
-  content: string,
-  parentBlogCommentId?: number
+  Username: string;
+  ApplicationUserId: number;
+  PublishDate: Date;
+  UpdateDate: Date;
+  Content: string;
+}
+
+interface NewComment {
+  BlogCommentId: number;
+  BlogId: number;
+  Content: string;
+  ParentBlogCommentId?: number | null;
 }
 
 export default function SinglePost() {
   const location = useLocation();
   const path = location.pathname.split("/")[2];
-  const [post, setPost] = useState<Post>({ blogId: -1,
+  const [post, setPost] = useState<Post>({
+    blogId: -1,
     username: "",
     title: "",
     content: "",
@@ -38,22 +46,25 @@ export default function SinglePost() {
     applicationUserId: 0,
     publishDate: new Date(),
     updateDate: new Date(),
-    deleteConfirm: false, });
-  const PF = "http://localhost:5000/images/";
+    deleteConfirm: false,
+  });
   const { user } = useContext(Context);
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [updateMode] = useState(false);
-  const [comment, setComment] = useState("");
+  const [comment, setComment] = useState<string>("");
   const [comments, setComments] = useState<Comment[]>([]);
 
   const onClickHandler = async () => {
+    const newComment: NewComment = {
+      BlogCommentId: -1,
+      BlogId: post.blogId,
+      Content: comment,
+      ParentBlogCommentId: null,
+    };
     try {
-      const res: AxiosResponse<Comment> = await axios.post(`${config.APP_URL}/api/BlogComment`, {
-       
-      });
-      setComments((prevComments) => [...prevComments, res.data]);
-      setComment("");
+      const res = await axios.post(`${config.APP_URL}/api/BlogComment`, newComment);
+      setComments([res.data.setComments]);
     } catch (err) {
       console.log(err);
     }
@@ -65,35 +76,42 @@ export default function SinglePost() {
 
   useEffect(() => {
     const getPost = async () => {
-      const res = await axios.get<Post>(`${config.APP_URL}/api/Blog/${path}`);
-      setPost(res.data);
-      setTitle(res.data.title);
-      setContent(res.data.content);
+      try {
+        const res = await axios.get<Post>(
+          `${config.APP_URL}/api/Blog/${path}`
+        );
+        setPost(res.data);
+        setTitle(res.data.title);
+        setContent(res.data.content);
+      } catch (err) {
+        console.log(err);
+      }
     };
     getPost();
   
     const fetchComments = async () => {
       try {
-        const res: AxiosResponse<Comment[]> = await axios.get(`${config.APP_URL}/api/BlogComment/{{NextNewBlogId}}?postId=${post.blogId}`);
+        const res = await axios.get<Comment[]>(
+          `${config.APP_URL}/api/BlogComment/${post.blogId}`
+        );
         setComments(res.data);
       } catch (err) {
         console.log(err);
       }
-    }
+    };
   
     fetchComments();
-  }, [path, post.blogId]);
+  }, [setComments, post.blogId, path]);
   
-
-  useEffect(() => {
-    const getPost = async () => {
-      const res = await axios.get<Post>(`${config.APP_URL}/api/Blog/${path}`);
-      setPost(res.data);
-      setTitle(res.data.title);
-      setContent(res.data.content);
-    };
-    getPost();
-  }, [path]);
+  const HandleCommentDelete = async (commentId: number) => {
+    try {
+      await axios.delete(`${config.APP_URL}/BlogComment/${comment}`, {
+        data: { BlogCommentId: comment }
+      });
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   const handleDelete = async () => {
     try {
@@ -109,7 +127,7 @@ export default function SinglePost() {
     <div className="singlePost">
     <div className="singlePostWrapper">
       {post.photoId && (
-        <img src={PF + post.photoId} alt="" className="singlePostImg" />
+        <img src="" alt="" className="singlePostImg" />
       )}
       {updateMode ? (
         <input
@@ -152,9 +170,10 @@ export default function SinglePost() {
       ) : (
         <p className="singlePostDesc">{content}</p>
       )}
-      <div className="main-container">
+     <div className="main-container">
         {comments.map((text) => (
-          <div className="comment-container">{comment}</div>
+          <div className="comment-container">{comment}
+          <button className="deleteCom" onClick={() => HandleCommentDelete}>X</button></div>
         ))}
         {user ? (
           <div className="comment-flexbox">
@@ -174,8 +193,5 @@ export default function SinglePost() {
       </div>
     </div>
   </div>
-  
   );
 }
-
-

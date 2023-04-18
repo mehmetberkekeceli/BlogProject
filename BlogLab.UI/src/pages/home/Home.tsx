@@ -18,6 +18,7 @@ export default function Home(): JSX.Element {
     fetchPosts();
   }, [search]);
 
+
   return (
     <>
       <Layout>

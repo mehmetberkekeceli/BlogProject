@@ -31,10 +31,9 @@ export type PostType = {
 };
 
 export default function Post({ post }: PostProps) {
-  const PF = "http://localhost:5000/images/";
   return (
     <div className="post">
-      {post.photoId && <img className="postImg" src={PF + post.photoId} alt="" />}
+      {post.photoId && <img className="postImg" src="" alt="" />}
       <div className="postInfo">
         <div className="postCats">
           {post.categories.map((c) => (

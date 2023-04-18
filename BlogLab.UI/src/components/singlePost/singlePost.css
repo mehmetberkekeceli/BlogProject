@@ -83,3 +83,14 @@
     margin: 10px 0;
     word-break: break-all;
   }
+.deleteCom{
+    height: 20px;
+    width: 60px;
+    background-color: green;
+    color: black;
+    font-size: 1.05rem;
+    margin-top: 20px;
+    border-radius: 10px;
+    border-style: none;
+    cursor: pointer;
+  }
