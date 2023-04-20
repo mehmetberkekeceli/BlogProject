@@ -176,10 +176,11 @@ export default function SinglePost() {
           <div className="comment-container">
     {comment && <div className="singlePostInfo">{comment.username} - {new Date(comment.publishDate).toLocaleString()}</div>}
     {comment && <p className="comment-content">{comment.content}</p>}
-    <button className="deleteCom" onClick={() => handleCommentDelete(comment.blogCommentId)}>Yorumu Sil!</button>
-</div>
+    {comment && user?.username === comment.username && <button className="deleteCom" onClick={() => handleCommentDelete(comment.blogCommentId)}>Yorumu Sil!</button>}
+    </div>
        ))}
         {user ? (
+          
           <div className="comment-flexbox">
             <h3 className="comment-text">Yorum Yap!</h3>
             <textarea
@@ -187,6 +188,8 @@ export default function SinglePost() {
               onChange={onChangeHandler}
               className="input-box"
             />
+            
+            
             <button onClick={onClickHandler} className="comment-button">
               Gönder!
             </button>
