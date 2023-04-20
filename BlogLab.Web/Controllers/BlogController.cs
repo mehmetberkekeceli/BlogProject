@@ -16,12 +16,10 @@ namespace BlogLab.Web.Controllers
     public class BlogController : ControllerBase
     {
         private readonly IBlogRepository _blogRepository;
-        private readonly IPhotoRepository _photoRepository;
 
-        public BlogController(IBlogRepository blogRepository, IPhotoRepository photoRepository)
+        public BlogController(IBlogRepository blogRepository)
         {
             _blogRepository = blogRepository;
-            _photoRepository = photoRepository;
         }
        
         [HttpPost]
@@ -29,15 +27,7 @@ namespace BlogLab.Web.Controllers
         {
             int applicationUserId = 1;
 
-            if (blogCreate.PhotoId.HasValue)
-            {
-                var photo = await _photoRepository.GetAsync(blogCreate.PhotoId.Value);
-
-                if (photo.ApplicationUserId != applicationUserId)
-                {
-                    return BadRequest("You did not upload the photo.");
-                }
-            }
+            
 
             var blog = await _blogRepository.UpsertAsync(blogCreate, applicationUserId);
 

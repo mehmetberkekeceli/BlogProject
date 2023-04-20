@@ -6,7 +6,6 @@ using System.Text;
 using System.Threading.Tasks;
 using BlogLab.Identity;
 using BlogLab.Models.Account;
-using BlogLab.Models.Settings;
 using BlogLab.Repository;
 using BlogLab.Services;
 using BlogLab.Web.Extensions;
@@ -36,15 +35,13 @@ namespace BlogLab.Web
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
-            services.Configure<CloudinaryOptions>(Configuration.GetSection("CloudinaryOptions"));
 
             services.AddScoped<ITokenService, TokenService>();
-            services.AddScoped<IPhotoService, PhotoService>();
+            
 
             services.AddScoped<IBlogRepository, BlogRepository>();
             services.AddScoped<IBlogCommentRepository, BlogCommentRepository>();
             services.AddScoped<IAccountRepository, AccountRepository>();
-            services.AddScoped<IPhotoRepository, PhotoRepository>();
 
             services.AddIdentityCore<ApplicationUserIdentity>(options =>
             {
