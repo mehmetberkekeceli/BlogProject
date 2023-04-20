@@ -3,10 +3,13 @@ import { Link } from "react-router-dom";
 import { Context } from "../../context/Context";
 import "./topbar.css";
 
-
 export default function TopBar(): JSX.Element {
 const { user, dispatch } = useContext(Context);
-
+const handleClick = () => {
+  if (window.location.pathname === "/") {
+    window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+  }
+};
 const handleLogout = () => {
 dispatch({ type: "LOGOUT" });
 };
@@ -50,11 +53,6 @@ Hakkımda
 </Link>
 </li>
 <li className="topListItem">
-    <Link className="link" to="/post/32">
-       .Net&React
-    </Link>
-</li>
-<li className="topListItem">
 <Link className="link" to="/write">
 Gönderi Yayınla !
 </Link>
@@ -82,8 +80,8 @@ Kayıt Ol
 </li>
 </ul>
 )}
-<i className="topSearchIcon fas fa-search"></i>
-<Link className="link" to="/posts"></Link>
+<i className="topSearchIcon fas fa-search" onClick={handleClick}></i>
+  <Link className="link" to="/posts"></Link>
 </div>
 </div>
 );

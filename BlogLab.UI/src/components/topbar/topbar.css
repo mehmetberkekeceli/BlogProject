@@ -55,5 +55,13 @@
     font-size: 18px;
     color: black;
     cursor: pointer;
-    margin-left: 15px;
+    margin-left: 3px;
+}
+input {
+    display: flex;
+    font-family:'Josefin Sans', sans-serif ;
+    color: black;
+    border-radius: 15px;
+    height: 20px;
+    width: 150px;
 }

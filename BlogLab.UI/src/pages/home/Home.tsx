@@ -13,11 +13,17 @@ export default function Home(): JSX.Element {
   useEffect(() => {
     const fetchPosts = async () => {
       const res = await axios.get(`${config.APP_URL}/api/Blog${search}`);
-      setPosts(res.data);
+      setPosts(res.data.items);
     };
     fetchPosts();
   }, [search]);
-
+  useEffect(() => {
+    const fetchPosts = async () => {
+      const response = await axios.get(`${config.APP_URL}/api/Blog`);
+      setPosts(response.data.items);
+    };
+    fetchPosts();
+  }, []);
 
   return (
     <>

@@ -33,23 +33,7 @@ export default function Write() {
       ImageUrl:null,
       PublicId:null
     };
-    if (file) {
-      const data = new FormData();
-      const filename = Date.now() + file.name;
-      data.append("name", filename);
-      data.append("file", file);
-       newPost.ImageUrl = filename;
-      try {
-        const res = await axios.post(config.APP_URL + "/api/Photo", data, {
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
-        });
-        newPost.ImageUrl = res.data.secure_url;
-            } catch (err) {
-        console.error(err);
-      }
-    }
+    
     try {
       const res = await axios.post(`${config.APP_URL}/api/Blog`,{
         BlogId : newPost.BlogId,
