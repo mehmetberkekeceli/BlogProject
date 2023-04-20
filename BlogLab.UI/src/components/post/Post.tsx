@@ -33,7 +33,7 @@ export type PostType = {
 export default function Post({ post }: PostProps) {
   return (
     <div className="post">
-      {post.photoId && <img className="postImg" src="" alt="" />}
+      <img className="postImg" src="https://images.wallpaperscraft.com/image/single/japan_shirakawa_houses_112963_1920x1080.jpg" alt="" />
       <div className="postInfo">
         <div className="postCats">
           {post.categories.map((c) => (

@@ -6,9 +6,9 @@
     padding-right: 0;
 }
 .singlePostImg{
-    width: 1100px;
+    width: 1490px;
     height: 500px;
-    border-radius: 5px;
+    border-radius: 15px;
     object-fit: cover;
 }
 .singlePostTitle{
@@ -82,7 +82,7 @@
     height: 70px;
     width: 400px;
     background-color: lightgrey;
-    border-radius: 20px;
+    border-radius: 6px;
     margin: 10px 0;
     word-break: break-all;
   }

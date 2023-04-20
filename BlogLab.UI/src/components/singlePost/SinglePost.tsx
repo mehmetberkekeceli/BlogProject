@@ -19,11 +19,12 @@ interface Post {
 }
 
 interface Comment {
-  Username: string;
+  username: string;
   ApplicationUserId: number;
-  PublishDate: Date;
-  UpdateDate: Date;
-  Content: string;
+  publishDate: Date;
+  updateDate: Date;
+  content: string;
+  blogCommentId: number;
 }
 
 interface NewComment {
@@ -64,7 +65,7 @@ export default function SinglePost() {
     };
     try {
       const res = await axios.post(`${config.APP_URL}/api/BlogComment`, newComment);
-      setComments([res.data.setComments]);
+      setComments([...comments , res.data]);
     } catch (err) {
       console.log(err);
     }
@@ -103,15 +104,16 @@ export default function SinglePost() {
     fetchComments();
   }, [setComments, post.blogId, path]);
   
-  const HandleCommentDelete = async (commentId: number) => {
+  const handleCommentDelete = async (commentId: number) => {
     try {
-      await axios.delete(`${config.APP_URL}/BlogComment/${comment}`, {
-        data: { BlogCommentId: comment }
-      });
+      await axios.delete(`${config.APP_URL}/api/BlogComment/${commentId}`);
+      setComments((prevComments) =>
+        prevComments.filter((comment) => comment.blogCommentId !== commentId)
+      );
     } catch (err) {
       console.log(err);
     }
-  };
+  };  
 
   const handleDelete = async () => {
     try {
@@ -126,9 +128,7 @@ export default function SinglePost() {
   return (
     <div className="singlePost">
     <div className="singlePostWrapper">
-      {post.photoId && (
-        <img src="" alt="" className="singlePostImg" />
-      )}
+        <img src="https://images.wallpaperscraft.com/image/single/japan_shirakawa_houses_112963_1920x1080.jpg" alt="" className="singlePostImg" />
       {updateMode ? (
         <input
           type="text"
@@ -158,7 +158,7 @@ export default function SinglePost() {
           </Link>
         </span>
         <span className="singlePostDate">
-          {new Date(post.createdAt).toDateString()}
+          {new Date(post.publishDate).toDateString()}
         </span>
       </div>
       {updateMode ? (
@@ -172,13 +172,12 @@ export default function SinglePost() {
       )}
       <hr />
      <div className="main-container">
-        {comments.map((text) => (
-          <div className="comment-container">{comment}
-          {comment}
-    {text && <span className="comment-author">{text.Username}</span>}
-    {text && <span className="comment-date">{new Date(text.PublishDate).toDateString()}</span>}
-    {text && <p className="comment-content">{text.Content}</p>}
-          <button className="deleteCom" onClick={() => HandleCommentDelete}>Yorumu Sil!</button></div>
+        {comments.map((comment) => (
+          <div className="comment-container">
+    {comment && <div className="singlePostInfo">{comment.username} - {new Date(comment.publishDate).toLocaleString()}</div>}
+    {comment && <p className="comment-content">{comment.content}</p>}
+    <button className="deleteCom" onClick={() => handleCommentDelete(comment.blogCommentId)}>Yorumu Sil!</button>
+</div>
        ))}
         {user ? (
           <div className="comment-flexbox">
