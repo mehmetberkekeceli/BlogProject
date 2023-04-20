@@ -25,7 +25,7 @@ namespace BlogLab.Web.Controllers
         [HttpPost]
         public async Task<ActionResult<Blog>> Create(BlogCreate blogCreate)
         {
-            int applicationUserId = 1;
+            int applicationUserId = 11;
 
             
 
@@ -70,7 +70,7 @@ namespace BlogLab.Web.Controllers
         [HttpDelete("{blogId}")]
         public async Task<ActionResult<int>> Delete(int blogId)
         {
-            int applicationUserId = 1;
+            int applicationUserId = 11;
 
             var foundBlog = await _blogRepository.GetAsync(blogId);
 

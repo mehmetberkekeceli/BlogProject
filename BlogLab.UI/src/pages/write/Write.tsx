@@ -16,7 +16,6 @@ interface NewPost {
 export default function Write() {
   const [Title, setTitle] = useState("");
   const [Content, setContent] = useState("");
-  const [file, setFile] = useState<File | null>(null);
   const { user } = useContext(Context);
   const history = useHistory();
 
@@ -33,7 +32,6 @@ export default function Write() {
       ImageUrl:null,
       PublicId:null
     };
-    
     try {
       const res = await axios.post(`${config.APP_URL}/api/Blog`,{
         BlogId : newPost.BlogId,
@@ -53,33 +51,10 @@ export default function Write() {
   }
     }
   };
-
-  const handleFileChange = (e: ChangeEvent<HTMLInputElement>) => {
-    if (e.target.files) {
-      setFile(e.target.files[0]);
-    }
-  };
-
   return (
     <div className="write">
-      {file && (
-        <img
-          className="writeImg"
-          src={URL.createObjectURL(file)}
-          alt=""
-        />
-      )}
       <form className="writeForm" onSubmit={handleSubmit}>
         <div className="writeFormGroup">
-          <label htmlFor="fileInput">
-            <i className="writeIcon fas fa-plus"></i>
-          </label>
-          <input
-            type="file"
-            id="fileInput"
-            style={{ display: "none" }}
-            onChange={handleFileChange}
-          />
           <input
             type="text"
             placeholder="Başlık Giriniz..."

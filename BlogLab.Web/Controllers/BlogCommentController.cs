@@ -24,7 +24,7 @@ namespace BlogLab.Web.Controllers
         [HttpPost]
         public async Task<ActionResult<BlogComment>> Create(BlogCommentCreate blogCommentCreate)
         {
-            int applicationUserId = 1;
+            int applicationUserId = 11;
 
             var createdBlogComment = await _blogCommentRepository.UpsertAsync(blogCommentCreate, applicationUserId);
 
@@ -41,7 +41,7 @@ namespace BlogLab.Web.Controllers
         [HttpDelete("{blogCommentId}")]
         public async Task<ActionResult<int>> Delete(int blogCommentId)
         {
-            int applicationUserId = 1;
+            int applicationUserId = 11;
 
             var foundBlogComment = await _blogCommentRepository.GetAsync(blogCommentId);
 
