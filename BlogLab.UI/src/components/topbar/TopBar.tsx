@@ -50,6 +50,11 @@ Hakkımda
 </Link>
 </li>
 <li className="topListItem">
+    <Link className="link" to="/post/32">
+       .Net&React
+    </Link>
+</li>
+<li className="topListItem">
 <Link className="link" to="/write">
 Gönderi Yayınla !
 </Link>

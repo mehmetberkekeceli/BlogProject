@@ -170,11 +170,16 @@ export default function SinglePost() {
       ) : (
         <p className="singlePostDesc">{content}</p>
       )}
+      <hr />
      <div className="main-container">
         {comments.map((text) => (
           <div className="comment-container">{comment}
-          <button className="deleteCom" onClick={() => HandleCommentDelete}>X</button></div>
-        ))}
+          {comment}
+    {text && <span className="comment-author">{text.Username}</span>}
+    {text && <span className="comment-date">{new Date(text.PublishDate).toDateString()}</span>}
+    {text && <p className="comment-content">{text.Content}</p>}
+          <button className="deleteCom" onClick={() => HandleCommentDelete}>Yorumu Sil!</button></div>
+       ))}
         {user ? (
           <div className="comment-flexbox">
             <h3 className="comment-text">Yorum Yap!</h3>
