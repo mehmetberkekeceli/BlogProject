@@ -11,6 +11,10 @@ using System.Threading;
 using System.Threading.Tasks;
 namespace BlogLab.Repository
 {
+    /// <summary>
+    /// The account creation class.
+    /// It is derived from the class IAccountRepository.
+    /// </summary>
     public class AccountRepository : IAccountRepository
     {
         private readonly IConfiguration _config;
@@ -18,6 +22,13 @@ namespace BlogLab.Repository
         {
             _config = config;
         }
+        /// <summary>
+        /// It is the user account creation function. Async works.
+        /// It takes two parameters.
+        /// </summary>
+        /// <param name="user">user info</param>
+        /// <param name="cancellationToken">token info</param>
+        /// <returns>returns user info</returns>
         public async Task<IdentityResult> CreateAsync(ApplicationUserIdentity user, CancellationToken cancellationToken)
         {
             cancellationToken.ThrowIfCancellationRequested();
@@ -47,6 +58,12 @@ namespace BlogLab.Repository
             }
             return IdentityResult.Success;
         }
+        /// <summary>
+        /// This is the function that returns the account username.
+        /// </summary>
+        /// <param name="normalizedUsername">normalized user name info</param>
+        /// <param name="cancellationToken">token info</param>
+        /// <returns>returns normalizedUsername info </returns>
         public async Task<ApplicationUserIdentity> GetByUsernameAsync(string normalizedUsername, CancellationToken cancellationToken)
         {
             cancellationToken.ThrowIfCancellationRequested();
