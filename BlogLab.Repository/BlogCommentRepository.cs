@@ -8,7 +8,6 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
 namespace BlogLab.Repository
 {
     public class BlogCommentRepository : IBlogCommentRepository
@@ -19,7 +18,6 @@ namespace BlogLab.Repository
         {
             _config = config;
         }
-
         public async Task<int> DeleteAsync(int blogCommentId)
         {
             int affectedRows = 0;
@@ -33,10 +31,8 @@ namespace BlogLab.Repository
                     new { BlogCommentId = blogCommentId },
                     commandType: CommandType.StoredProcedure);
             }
-
             return affectedRows;
         }
-
         public async Task<List<BlogComment>> GetAllAsync(int blogId)
         {
             IEnumerable<BlogComment> blogComments;
@@ -53,7 +49,6 @@ namespace BlogLab.Repository
 
             return blogComments.ToList();
         }
-
         public async Task<BlogComment> GetAsync(int blogCommentId)
         {
             BlogComment blogComment;
@@ -70,7 +65,6 @@ namespace BlogLab.Repository
 
             return blogComment;
         }
-
         public async Task<BlogComment> UpsertAsync(BlogCommentCreate blogCommentCreate, int applicationUserId)
         {
             var dataTable = new DataTable();

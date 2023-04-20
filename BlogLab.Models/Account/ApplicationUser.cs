@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using System.Text;
-
 namespace BlogLab.Models.Account
 {
     public class ApplicationUser
@@ -16,6 +15,5 @@ namespace BlogLab.Models.Account
         public string Email { get; set; }
 
         public string Token { get; set; }
-
     }
 }

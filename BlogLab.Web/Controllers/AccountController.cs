@@ -17,7 +17,6 @@ namespace BlogLab.Web.Controllers
         private readonly ITokenService _tokenService;
         private readonly UserManager<ApplicationUserIdentity> _userManager;
         private readonly SignInManager<ApplicationUserIdentity> _signInManager;
-
         public AccountController(
             ITokenService tokenService, 
             UserManager<ApplicationUserIdentity> userManager,
@@ -27,7 +26,6 @@ namespace BlogLab.Web.Controllers
             _userManager = userManager;
             _signInManager = signInManager;
         }
-
         [HttpPost("register")]
         public async Task<ActionResult<ApplicationUser>> Register(ApplicationUserCreate applicationUserCreate)
         {
@@ -37,7 +35,6 @@ namespace BlogLab.Web.Controllers
                 Email = applicationUserCreate.Email,
                 Fullname = applicationUserCreate.Fullname
             };
-
             var result = await _userManager.CreateAsync(applicationUserIdentity, applicationUserCreate.Password);
 
             if (result.Succeeded)
@@ -55,10 +52,8 @@ namespace BlogLab.Web.Controllers
 
                 return Ok(applicationUser);
             }
-
             return BadRequest(result.Errors);
         }
-
         [HttpPost("login")]
         public async Task<ActionResult<ApplicationUser>> Login(ApplicationUserLogin applicationUserLogin)
         {
@@ -80,11 +75,9 @@ namespace BlogLab.Web.Controllers
                         Fullname = applicationUserIdentity.Fullname,
                         Token = _tokenService.CreateToken(applicationUserIdentity)
                     };
-
                     return Ok(applicationUser);
                 }
             }
-
             return BadRequest("Invalid login attempt.");
         }
     }

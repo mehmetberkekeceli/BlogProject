@@ -8,7 +8,6 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
 namespace BlogLab.Repository
 {
     public class BlogRepository : IBlogRepository
@@ -19,7 +18,6 @@ namespace BlogLab.Repository
         {
             _config = config;
         }
-
         public async Task<int> DeleteAsync(int blogId)
         {
             int affectedRows = 0;
@@ -33,10 +31,8 @@ namespace BlogLab.Repository
                     new { BlogId = blogId },
                     commandType: CommandType.StoredProcedure);
             }
-
             return affectedRows;
         }
-
         public async Task<PagedResults<Blog>> GetAllAsync(BlogPaging blogPaging)
         {
             var results = new PagedResults<Blog>();
@@ -57,10 +53,8 @@ namespace BlogLab.Repository
                     results.TotalCount = multi.ReadFirst<int>();
                 }
             }
-
             return results;
         }
-
         public async Task<List<Blog>> GetAllByUserIdAsync(int applicationUserId)
         {
             IEnumerable<Blog> blogs;
@@ -77,7 +71,6 @@ namespace BlogLab.Repository
 
             return blogs.ToList();
         }
-
         public async Task<List<Blog>> GetAllFamousAsync()
         {
             IEnumerable<Blog> famousBlogs;
@@ -94,7 +87,6 @@ namespace BlogLab.Repository
 
             return famousBlogs.ToList();
         }
-
         public async Task<Blog> GetAsync(int blogId)
         {
             Blog blog;
@@ -111,7 +103,6 @@ namespace BlogLab.Repository
 
             return blog;
         }
-
         public async Task<Blog> UpsertAsync(BlogCreate blogCreate, int applicationUserId)
         {
             var dataTable = new DataTable();

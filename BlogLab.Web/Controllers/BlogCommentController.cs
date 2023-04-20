@@ -16,7 +16,6 @@ namespace BlogLab.Web.Controllers
     public class BlogCommentController : ControllerBase
     {
         private readonly IBlogCommentRepository _blogCommentRepository;
-
         public BlogCommentController(IBlogCommentRepository blogCommentRepository)
         {
             _blogCommentRepository = blogCommentRepository;
@@ -30,7 +29,6 @@ namespace BlogLab.Web.Controllers
 
             return Ok(createdBlogComment);
         }
-
         [HttpGet("{blogId}")]
         public async Task<ActionResult<List<BlogComment>>> GetAll(int blogId)
         {

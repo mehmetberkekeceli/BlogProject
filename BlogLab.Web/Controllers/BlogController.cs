@@ -16,25 +16,19 @@ namespace BlogLab.Web.Controllers
     public class BlogController : ControllerBase
     {
         private readonly IBlogRepository _blogRepository;
-
         public BlogController(IBlogRepository blogRepository)
         {
             _blogRepository = blogRepository;
         }
-       
         [HttpPost]
         public async Task<ActionResult<Blog>> Create(BlogCreate blogCreate)
         {
             int applicationUserId = 11;
 
-            
-
             var blog = await _blogRepository.UpsertAsync(blogCreate, applicationUserId);
 
             return Ok(blog);
         }
-
-
         [HttpGet]
         public async Task<ActionResult<PagedResults<Blog>>> GetAll([FromQuery] BlogPaging blogPaging)
         {
@@ -42,7 +36,6 @@ namespace BlogLab.Web.Controllers
 
             return Ok(blogs);
         }
-
         [HttpGet("{blogId}")]
         public async Task<ActionResult<Blog>> Get(int blogId)
         {
@@ -50,7 +43,6 @@ namespace BlogLab.Web.Controllers
 
             return Ok(blog);
         }
-
         [HttpGet("user/{applicationUserId}")]
         public async Task<ActionResult<List<Blog>>> GetByApplicationUserId(int applicationUserId)
         {
@@ -58,7 +50,6 @@ namespace BlogLab.Web.Controllers
 
             return Ok(blogs);
         }
-
         [HttpGet("famous")]
         public async Task<ActionResult<List<Blog>>> GetAllFamous()
         {
@@ -66,7 +57,6 @@ namespace BlogLab.Web.Controllers
 
             return Ok(blogs);
         }
-
         [HttpDelete("{blogId}")]
         public async Task<ActionResult<int>> Delete(int blogId)
         {
@@ -87,6 +77,5 @@ namespace BlogLab.Web.Controllers
                 return BadRequest("You didn't create this blog.");
             }
         }
-
     }
 }

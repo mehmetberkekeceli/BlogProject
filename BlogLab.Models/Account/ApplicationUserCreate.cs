@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
-
 namespace BlogLab.Models.Account
 {
     public class ApplicationUserCreate : ApplicationUserLogin
@@ -15,6 +14,5 @@ namespace BlogLab.Models.Account
         [MaxLength(30, ErrorMessage = "Can be at most 30 characters")]
         [EmailAddress(ErrorMessage = "Invalid email format")]
         public string Email { get; set; }
-
     }
 }

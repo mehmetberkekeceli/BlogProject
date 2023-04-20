@@ -9,18 +9,15 @@ using System.Data.SqlClient;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-
 namespace BlogLab.Repository
 {
     public class AccountRepository : IAccountRepository
     {
         private readonly IConfiguration _config;
-
         public AccountRepository(IConfiguration config)
         {
             _config = config;
         }
-
         public async Task<IdentityResult> CreateAsync(ApplicationUserIdentity user, CancellationToken cancellationToken)
         {
             cancellationToken.ThrowIfCancellationRequested();
@@ -41,7 +38,6 @@ namespace BlogLab.Repository
                 user.Fullname,
                 user.PasswordHash
                 );
-
             using (var connection = new SqlConnection(_config.GetConnectionString("DefaultConnection")))
             {
                 await connection.OpenAsync(cancellationToken);
@@ -49,10 +45,8 @@ namespace BlogLab.Repository
                 await connection.ExecuteAsync("Account_Insert",
                     new { Account = dataTable.AsTableValuedParameter("dbo.AccountType") }, commandType: CommandType.StoredProcedure);
             }
-
             return IdentityResult.Success;
         }
-
         public async Task<ApplicationUserIdentity> GetByUsernameAsync(string normalizedUsername, CancellationToken cancellationToken)
         {
             cancellationToken.ThrowIfCancellationRequested();
@@ -68,7 +62,6 @@ namespace BlogLab.Repository
                     commandType: CommandType.StoredProcedure
                     );
             }
-
             return applicationUser;
         }
     }
