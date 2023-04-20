@@ -3,27 +3,29 @@
 
 ----------------------MBRKCL--------------------
 
-I created a Full Stack blog site using Backend ASP.NET Core, Frontend React.
+I created a Full Stack blog site using Backend ASP.NET Core, Frontend TSReact.
 
 • You can login and Register with JWT.
 
 • You can comment, post and search.
 
-• You can update your account from the Settings tab.
-
 The technology packages I use;
 
 -BACKEND-
 
-JWT,EF,Cloudinary,Identity
+JWT,EF,Identity
 
 -FRONTEND-
 
-React Redux,React Hooks,Context API and TypeScript
-![Ekran Görüntüsü (1)](https://user-images.githubusercontent.com/108813428/228577151-d5bab59e-8756-41d1-843d-0afe99296285.png)
-![Ekran Görüntüsü (2)](https://user-images.githubusercontent.com/108813428/228577174-2368859e-38e1-496c-83f7-082b04dcbc24.png)
-![Ekran Görüntüsü (3)](https://user-images.githubusercontent.com/108813428/228577182-c0414ebf-266d-41ba-a868-a3bbf7891379.png)
-![Ekran Görüntüsü (4)](https://user-images.githubusercontent.com/108813428/228577191-b0a06bde-7f12-4520-aede-67889f8bc04a.png)
-![Ekran Görüntüsü (5)](https://user-images.githubusercontent.com/108813428/228577195-ffef11c9-98ff-49d6-a544-05f94a3896a7.png)
-![Ekran Görüntüsü (6)](https://user-images.githubusercontent.com/108813428/228577197-16ed7cba-e51b-48ce-9771-7458d8b80103.png)
-![Ekran Görüntüsü (7)](https://user-images.githubusercontent.com/108813428/228577214-6c614689-1fda-4c78-9582-4d8423ddeef1.png)
+React Redux,React Hooks,Config Env,Context API and TypeScript
+
+How Looks Like ?
+=>
+![BlogPhoto1](https://user-images.githubusercontent.com/108813428/233468281-56d5222d-0dd6-49b1-a531-f201664538c0.png)
+![BlogPhoto2](https://user-images.githubusercontent.com/108813428/233468310-91399d89-0d47-4448-924d-c2d3596e2a65.png)
+![BlogPhoto3](https://user-images.githubusercontent.com/108813428/233468326-e10e63a2-3856-4f4a-8d52-0ff9d7d16860.png)
+![BlogPhoto4](https://user-images.githubusercontent.com/108813428/233468346-a74da452-6093-4b05-8c75-3048f0653ffe.png)
+![BlogPhoto5](https://user-images.githubusercontent.com/108813428/233468355-942798d4-7946-4490-b87e-98ffb44b837f.png)
+![BlogPhoto6](https://user-images.githubusercontent.com/108813428/233468359-c1de3b07-f6e8-49ad-a755-03e5e4aa4a9b.png)
+![BlogPhoto7](https://user-images.githubusercontent.com/108813428/233468375-495e54a8-e29e-4cae-9eb1-fdccb504b3d4.png)
+![BlogPhoto8](https://user-images.githubusercontent.com/108813428/233468391-c7d76e87-32da-4c13-9b9e-2f2149babd1f.png)
