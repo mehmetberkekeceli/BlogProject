@@ -9,6 +9,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { useContext } from "react";
 import { Context } from "./context/Context";
 import Footer from "./components/footer/Footer";
+import VisitorCounter from "./components/visitor/VisitorCounter";
 
 function App(): JSX.Element {
   const { user } = useContext(Context);
@@ -16,6 +17,7 @@ function App(): JSX.Element {
     <Router>
       <TopBar />
       <Footer />
+      <VisitorCounter/>
       <Switch>
         <Route exact path="/">
           <Home />

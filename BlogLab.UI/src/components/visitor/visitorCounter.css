@@ -1,0 +1,12 @@
+.Ziyaret {
+    font-family:'Josefin Sans', sans-serif ;
+    font-size:small;
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    background-color: #333;
+    color: white;
+    padding: 5px;
+    border-radius: 10px;
+    cursor: pointer;
+}
