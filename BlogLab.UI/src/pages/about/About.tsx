@@ -16,6 +16,8 @@ const About: React.FC = () => {
           👋 Merhaba ben Berke, 1996 yılı Ankara doğumluyum, Karabük Üniversitesi İşletme mezunuyum,Yönetim Bilişim Sistemleri lisansım devam ediyor.Küçüklüğümden beri genellikle teknoloji , bilgisayar oyunları ve spora ilgiliyim.
           1 yıldır yazılım geliştirme alanıyla ilgileniyorum. İlgimi en çok çeken kısım Web teknolojileri oldu ve bu yolda ilerleyebilmek adına 
           Java eğitimi aldım(Spring,SQL) ve şuan .NET &amp; React üzerine bir proje geliştiriyorum , Kendimi geliştirmeye devam ediyorum.
+         <br />
+          İletişim = berke.keceli96@gmail.com
         </p>   
       </div>
       
