@@ -43,6 +43,7 @@
     color: #666;
     font-size: 18px;
     line-height: 25px;
+    font-family:'Josefin Sans', sans-serif ;
 }
 .singlePostDesc::first-letter{
     margin-left: 20px;
@@ -58,13 +59,14 @@
     margin: 12px 0;
     font-size: 1.60rem;
     font-weight: 600;
-    font-family: 'Varela Round', sans-serif;
+    font-family:'Josefin Sans', sans-serif ;
 }
 .input-box{
     height: 75px;
     width: 465px;
-    background-color: lightgrey;
-    font-family: 'Varela Round', sans-serif;
+    background-color: #333;
+    color: white;
+    font-family:'Josefin Sans', sans-serif ;
     border-radius: 15px;
 }
 .comment-button {
@@ -77,14 +79,17 @@
     border-radius: 15px;
     border-style: none;
     cursor: pointer;
+    font-family:'Josefin Sans', sans-serif ;
 }
 .comment-container {
     height: 70px;
     width: 400px;
-    background-color: lightgrey;
+    background-color: #333;
+    color: white;
     border-radius: 6px;
     margin: 10px 0;
     word-break: break-all;
+    font-family:'Josefin Sans', sans-serif ;
   }
 .deleteCom{
     height: 28px;
@@ -98,4 +103,5 @@
     cursor: pointer;
     float:right;
     position: inherit;
+    font-family:'Josefin Sans', sans-serif ;
   }

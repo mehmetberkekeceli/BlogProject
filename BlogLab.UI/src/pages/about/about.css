@@ -8,6 +8,7 @@
     flex-direction: column;
     align-items: center;
     text-align: center;
+    font-family: 'Lora',serif;
 }
 .aboutItem{
     display: flex;
@@ -57,10 +58,10 @@
 .text {
     color: black;
     font-size: medium;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-family:'Josefin Sans', sans-serif ;
 }
 .headdqwe {
     color: black;
     font-size: large;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-family:'Josefin Sans', sans-serif ;
 }
