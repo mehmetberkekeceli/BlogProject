@@ -20,12 +20,14 @@ JWT,EF,Identity
 React Redux,React Hooks,Config Env,Context API and TypeScript
 
 How Looks Like ?
+
 =>
-![BlogPhoto1](https://user-images.githubusercontent.com/108813428/233468281-56d5222d-0dd6-49b1-a531-f201664538c0.png)
-![BlogPhoto2](https://user-images.githubusercontent.com/108813428/233468310-91399d89-0d47-4448-924d-c2d3596e2a65.png)
-![BlogPhoto3](https://user-images.githubusercontent.com/108813428/233468326-e10e63a2-3856-4f4a-8d52-0ff9d7d16860.png)
-![BlogPhoto4](https://user-images.githubusercontent.com/108813428/233468346-a74da452-6093-4b05-8c75-3048f0653ffe.png)
-![BlogPhoto5](https://user-images.githubusercontent.com/108813428/233468355-942798d4-7946-4490-b87e-98ffb44b837f.png)
-![BlogPhoto6](https://user-images.githubusercontent.com/108813428/233468359-c1de3b07-f6e8-49ad-a755-03e5e4aa4a9b.png)
-![BlogPhoto7](https://user-images.githubusercontent.com/108813428/233468375-495e54a8-e29e-4cae-9eb1-fdccb504b3d4.png)
-![BlogPhoto8](https://user-images.githubusercontent.com/108813428/233468391-c7d76e87-32da-4c13-9b9e-2f2149babd1f.png)
+
+![Blog1](https://user-images.githubusercontent.com/108813428/234646350-cd274b5a-50d8-4c50-acc7-a81ad983f914.png)
+![Blog2](https://user-images.githubusercontent.com/108813428/234646358-a62b0c71-474f-48af-91be-0436a4cc33aa.png)
+![Blog3](https://user-images.githubusercontent.com/108813428/234646366-56cef1ab-2490-416f-bc54-b908fed76f54.png)
+![Blog4](https://user-images.githubusercontent.com/108813428/234646370-1333f46e-84d2-4ad5-b4b9-4b50a5ff23ef.png)
+![Blog5](https://user-images.githubusercontent.com/108813428/234646383-4664ca16-a5ad-4f20-ba0d-5f0445a0744d.png)
+![Blog6](https://user-images.githubusercontent.com/108813428/234646397-9a8b31ee-10e5-48ca-9368-02eef5e914f0.png)
+![Blog7](https://user-images.githubusercontent.com/108813428/234646408-47939bde-a697-4bfb-a905-41371607606a.png)
+![Blog8](https://user-images.githubusercontent.com/108813428/234646409-110aa1e3-4fe4-4d4e-9c3a-9d9ae25aa2b1.png)
