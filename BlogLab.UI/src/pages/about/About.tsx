@@ -2,6 +2,7 @@ import "./about.css";
 import React from "react";
 
 const About: React.FC = () => {
+  
   return (
     <div className="about">
       <div className="aboutItem">

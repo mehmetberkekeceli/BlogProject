@@ -41,6 +41,7 @@ export default function Register() {
       setError(true);
     }
   };
+  
   return (
     <div className="register">
       <span className="registerTitle">Kayıt Ol!</span>
