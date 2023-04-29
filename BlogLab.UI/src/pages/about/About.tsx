@@ -24,7 +24,6 @@ const About: React.FC = () => {
       <div className="topIconss">
         <h2 className="follow"> Projelerimi Takip Etmek İster Misin ?</h2>
         <i className="fa-solid fa-right-long"></i>
-        <hr />
         <a href="https://github.com/mehmetberkekeceli" target="_blank" rel="noopener noreferrer">
           <i className="fa-brands fa-square-github"></i>
         </a>

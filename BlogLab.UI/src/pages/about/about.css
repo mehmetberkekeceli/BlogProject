@@ -31,15 +31,19 @@
 }
 .topIconss {
     padding: 10px;
-	  text-align: center;
-	  text-decoration: none;
-	  margin: 5px 2px;
-	  border-radius: 8px;
-	 font-size: 45px;
-     margin: 0;
-     display: flex;
-     cursor: pointer;
-}
+    text-align: center;
+    text-decoration: none;
+    margin: 5px 2px;
+    border-radius: 8px;
+    font-size: 45px;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    gap: 10px; /* iki ikon arasındaki mesafeyi ayarlar */
+  }
+  .topIconss i {
+    cursor: pointer;
+  }
 .aboutimg {
     border-radius: 50%;
    width: 15%;
