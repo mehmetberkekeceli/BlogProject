@@ -66,3 +66,6 @@ input {
     width: 150px;
     text-align: center;
 }
+.topIcon i:hover {
+    transform: scale(1.8);
+  }
