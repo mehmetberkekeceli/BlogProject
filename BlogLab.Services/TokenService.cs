@@ -13,6 +13,8 @@ namespace BlogLab.Services
     /// <summary>
     /// The business service class where token creations are made.
     /// JWT is used as the token library.
+    /// The following class fields use an underscore prefix to distinguish them from local variables and method arguments.
+    /// This is a common convention in C# programming.
     /// </summary>
     public class TokenService : ITokenService
     {

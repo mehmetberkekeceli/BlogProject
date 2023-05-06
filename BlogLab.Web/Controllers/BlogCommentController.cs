@@ -11,6 +11,11 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace BlogLab.Web.Controllers
 {
+    /// <summary>
+    /// The following class fields use an underscore prefix to distinguish them from local variables and method arguments.
+    /// This is a common convention in C# programming.
+    /// </summary>
+ 
     [Route("api/[controller]")]
     [ApiController]
     public class BlogCommentController : ControllerBase

@@ -12,6 +12,8 @@ namespace BlogLab.Repository
 {
     /// <summary>
     /// Adding, deleting, updating, etc. The class in which the operations are encoded.
+    /// The following class fields use an underscore prefix to distinguish them from local variables and method arguments.
+    /// This is a common convention in C# programming.
     /// </summary>
     public class BlogRepository : IBlogRepository
     {

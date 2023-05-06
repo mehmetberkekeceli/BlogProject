@@ -14,6 +14,8 @@ namespace BlogLab.Repository
     /// <summary>
     /// The account creation class.
     /// It is derived from the class IAccountRepository.
+    /// The following class fields use an underscore prefix to distinguish them from local variables and method arguments.
+    /// This is a common convention in C# programming.
     /// </summary>
     public class AccountRepository : IAccountRepository
     {

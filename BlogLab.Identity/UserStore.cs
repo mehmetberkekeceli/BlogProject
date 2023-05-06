@@ -15,6 +15,10 @@ namespace BlogLab.Identity
         IUserEmailStore<ApplicationUserIdentity>,
         IUserPasswordStore<ApplicationUserIdentity>
     {
+        /// <summary>
+        /// The following class fields use an underscore prefix to distinguish them from local variables and method arguments.
+        /// This is a common convention in C# programming.
+        /// </summary>
         private readonly IAccountRepository _accountRepsoitory;
         public UserStore(IAccountRepository accountRepository)
         {
