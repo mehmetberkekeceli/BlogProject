@@ -6,16 +6,16 @@ import { config } from "../../config/env";
 import { useHistory } from "react-router-dom";
 
 interface NewPost {
-  BlogId:number;
-  Title: string;
-  Content: string;
-  ImageUrl:string | null;
-  PublicId:string | null;
+  blogId:number;
+  title: string;
+  content: string;
+  imageUrl:string | null;
+  publicId:string | null;
 }
 
 export default function Write() {
-  const [Title, setTitle] = useState("");
-  const [Content, setContent] = useState("");
+  const [title, setTitle] = useState("");
+  const [content, setContent] = useState("");
   const { user } = useContext(Context);
   const history = useHistory();
 
@@ -26,19 +26,19 @@ export default function Write() {
       return;
     }
     const newPost: NewPost = {
-      BlogId: -1,
-      Title: Title,
-      Content: Content,
-      ImageUrl:null,
-      PublicId:null
+      blogId: -1,
+      title: title,
+      content: content,
+      imageUrl:null,
+      publicId:null
     };
     try {
       const res = await axios.post(`${config.APP_URL}/api/Blog`,{
-        BlogId : newPost.BlogId,
-        Title : newPost.Title,
-        Content : newPost.Content,
-        ImageUrl : newPost.ImageUrl,
-        PublicId : newPost.PublicId
+        blogId : newPost.blogId,
+        title : newPost.title,
+        content : newPost.content,
+        imageUrl : newPost.imageUrl,
+        publicId : newPost.publicId
       });
       history.push(`/post/${res.data.blogId}`);
     } catch (error) {
@@ -60,7 +60,7 @@ export default function Write() {
             placeholder="Başlık Giriniz..."
             className="writeInput"
             autoFocus={true}
-            value={Title}
+            value={title}
             onChange={(e) => setTitle(e.target.value)}
           />
         </div>
@@ -68,7 +68,7 @@ export default function Write() {
         <textarea
   placeholder="İçeriği giriniz..."
   className="writeInput writeText"
-  value={Content}
+  value={content}
   onChange={(e: ChangeEvent<HTMLTextAreaElement>) => setContent(e.target.value)}
   />
         </div>

@@ -20,7 +20,7 @@ interface Post {
 
 interface Comment {
   username: string;
-  ApplicationUserId: number;
+  applicationUserId: number;
   publishDate: Date;
   updateDate: Date;
   content: string;
@@ -28,10 +28,10 @@ interface Comment {
 }
 
 interface NewComment {
-  BlogCommentId: number;
-  BlogId: number;
-  Content: string;
-  ParentBlogCommentId?: number | null;
+  blogCommentId: number;
+  blogId: number;
+  content: string;
+  parentBlogCommentId?: number | null;
 }
 
 export default function SinglePost() {
@@ -58,10 +58,10 @@ export default function SinglePost() {
 
   const onClickHandler = async () => {
     const newComment: NewComment = {
-      BlogCommentId: -1,
-      BlogId: post.blogId,
-      Content: comment,
-      ParentBlogCommentId: null,
+      blogCommentId: -1,
+      blogId: post.blogId,
+      content: comment,
+      parentBlogCommentId: null,
     };
     try {
       const res = await axios.post(`${config.APP_URL}/api/BlogComment`, newComment);

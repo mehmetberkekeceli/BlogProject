@@ -7,10 +7,10 @@ import { config } from "../../config/env";
 import "./register.css";
 
 interface FormInputs {
-  username: string;
+  userName: string;
   email: string;
   password: string;
-  fullname: string;
+  fullName: string;
 }
 
 export default function Register() {
@@ -31,8 +31,8 @@ export default function Register() {
     setError(false);
     try {
       const res = await axios.post(`${config.APP_URL}/api/Account/register`, {
-        fullname : data.fullname,
-        username: data.username,
+        fullname : data.fullName,
+        username: data.userName,
         email: data.email,
         password: data.password,
       });
@@ -48,24 +48,24 @@ export default function Register() {
       <form className="registerForm" onSubmit={handleSubmit(onSubmit)}>
       <label>Ad</label>
         <input
-        {...register("fullname", {
+        {...register("fullName", {
           required: "Bu alanın doldurulması zorunludur",
         })}
           type="text"
           className="registerInput"
           placeholder="Adınızı Giriniz..."
         />
-        {errors.fullname && <div>{errors.fullname.message}</div>}
+        {errors.fullName && <div>{errors.fullName.message}</div>}
         <label>Kullanıcı Adı</label>
         <input
-          {...register("username", {
+          {...register("userName", {
             required: "Bu alanın doldurulması zorunludur",
           })}
           type="text"
           className="registerInput"
           placeholder="Kullanıcı  Adınızı Giriniz..."
         />
-        {errors.username && <div>{errors.username.message}</div>}
+        {errors.userName && <div>{errors.userName.message}</div>}
         <label>Email</label>
         <input
           {...register("email", {
