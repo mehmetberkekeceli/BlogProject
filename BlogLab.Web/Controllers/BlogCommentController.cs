@@ -26,9 +26,10 @@ namespace BlogLab.Web.Controllers
             _blogCommentRepository = blogCommentRepository;
         }
         [HttpPost]
+        [Authorize]
         public async Task<ActionResult<BlogComment>> Create(BlogCommentCreate blogCommentCreate)
         {
-            int applicationUserId = 11;
+            int applicationUserId = int.Parse(User.Claims.First(i => i.Type == JwtRegisteredClaimNames.NameId).Value);
 
             var createdBlogComment = await _blogCommentRepository.UpsertAsync(blogCommentCreate, applicationUserId);
 
@@ -42,9 +43,10 @@ namespace BlogLab.Web.Controllers
             return blogComments;
         }
         [HttpDelete("{blogCommentId}")]
+        [Authorize]
         public async Task<ActionResult<int>> Delete(int blogCommentId)
         {
-            int applicationUserId = 11;
+            int applicationUserId = int.Parse(User.Claims.First(i => i.Type == JwtRegisteredClaimNames.NameId).Value);
 
             var foundBlogComment = await _blogCommentRepository.GetAsync(blogCommentId);
 

@@ -55,6 +55,7 @@ export default function SinglePost() {
   const [updateMode] = useState(false);
   const [comment, setComment] = useState<string>("");
   const [comments, setComments] = useState<Comment[]>([]);
+  const {token} = useContext(Context);
 
   const onClickHandler = async () => {
     const newComment: NewComment = {
@@ -64,8 +65,16 @@ export default function SinglePost() {
       parentBlogCommentId: null,
     };
     try {
-      const res = await axios.post(`${config.APP_URL}/api/BlogComment`, newComment);
-      setComments([...comments , res.data]);
+      const res = await axios.post(
+        `${config.APP_URL}/api/BlogComment`,
+        newComment,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      setComments([...comments, res.data]);
     } catch (err) {
       console.log(err);
     }
@@ -106,18 +115,25 @@ export default function SinglePost() {
   
   const handleCommentDelete = async (commentId: number) => {
     try {
-      await axios.delete(`${config.APP_URL}/api/BlogComment/${commentId}`);
+      await axios.delete(`${config.APP_URL}/api/BlogComment/${commentId}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
       setComments((prevComments) =>
         prevComments.filter((comment) => comment.blogCommentId !== commentId)
       );
     } catch (err) {
       console.log(err);
     }
-  };  
+  };
 
   const handleDelete = async () => {
     try {
       await axios.delete(`${config.APP_URL}/api/Blog/${post.blogId}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
         data: { post },
       });
       window.location.replace("/");

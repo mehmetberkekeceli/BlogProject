@@ -18,6 +18,7 @@ export default function Write() {
   const [content, setContent] = useState("");
   const { user } = useContext(Context);
   const history = useHistory();
+  const {token} = useContext(Context);
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
@@ -33,12 +34,16 @@ export default function Write() {
       publicId:null
     };
     try {
-      const res = await axios.post(`${config.APP_URL}/api/Blog`,{
-        blogId : newPost.blogId,
-        title : newPost.title,
-        content : newPost.content,
-        imageUrl : newPost.imageUrl,
-        publicId : newPost.publicId
+      const res = await axios.post(`${config.APP_URL}/api/Blog`, {
+        blogId: newPost.blogId,
+        title: newPost.title,
+        content: newPost.content,
+        imageUrl: newPost.imageUrl,
+        publicId: newPost.publicId,
+      }, {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
       });
       history.push(`/post/${res.data.blogId}`);
     } catch (error) {

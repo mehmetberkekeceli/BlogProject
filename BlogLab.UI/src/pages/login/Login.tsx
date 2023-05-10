@@ -4,21 +4,22 @@ import { useSelector } from "react-redux";
 import { Link, useHistory } from "react-router-dom";
 import { config } from "../../config/env";
 import { Context } from "../../context/Context";
-import { login, selectUser } from "../../redux/userSlice";
+import { login, selectToken, selectUser } from "../../redux/userSlice";
 import "./login.css";
 
 export default function Login(): JSX.Element {
   const userRef = useRef<HTMLInputElement>(null);
   const passwordRef = useRef<HTMLInputElement>(null);
-  const { dispatch, isFetching } = useContext(Context);
+  const { dispatch, isFetching,token, setToken } = useContext(Context);
   const user = useSelector(selectUser);
+  const userToken = useSelector(selectToken);
   const history = useHistory();
 
   useEffect(() => {
-    if (user) {
+    if (user && userToken) {
       history.push("/");
     }
-  }, [history, user]);
+  }, [history, user, userToken]);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -26,7 +27,7 @@ export default function Login(): JSX.Element {
     if (!userRef.current || !passwordRef.current) {
       return;
     }
-
+    
     dispatch({ type: "LOGIN_START" });
 
     try {
@@ -34,14 +35,16 @@ export default function Login(): JSX.Element {
         username: userRef.current.value,
         password: passwordRef.current.value,
       });
-
       dispatch(login(res.data));
       dispatch({ type: "LOGIN_SUCCESS", payload: res.data });
+      setToken(res.data.token);
     } catch (err) {
       dispatch({ type: "LOGIN_FAILURE" });
     }
   };
 
+  console.log("Your Token" , token);
+  
   return (
     <div className="login">
       <span className="loginTitle">Giriş Yap!</span>

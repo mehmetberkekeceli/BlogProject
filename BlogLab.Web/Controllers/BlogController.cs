@@ -26,9 +26,10 @@ namespace BlogLab.Web.Controllers
             _blogRepository = blogRepository;
         }
         [HttpPost]
+        [Authorize]
         public async Task<ActionResult<Blog>> Create(BlogCreate blogCreate)
         {
-            int applicationUserId = 11;
+            int applicationUserId = int.Parse(User.Claims.First(i => i.Type == JwtRegisteredClaimNames.NameId).Value);
 
             var blog = await _blogRepository.UpsertAsync(blogCreate, applicationUserId);
 
@@ -63,9 +64,10 @@ namespace BlogLab.Web.Controllers
             return Ok(blogs);
         }
         [HttpDelete("{blogId}")]
+        [Authorize]
         public async Task<ActionResult<int>> Delete(int blogId)
         {
-            int applicationUserId = 11;
+            int applicationUserId = int.Parse(User.Claims.First(i => i.Type == JwtRegisteredClaimNames.NameId).Value);
 
             var foundBlog = await _blogRepository.GetAsync(blogId);
 
