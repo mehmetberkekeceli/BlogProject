@@ -20,10 +20,10 @@
     flex:6;
 }
 
-.topIcon{
+.topIcon i{
     font-size: 20px;
     margin-right: 10px;
-    color: black;
+    color: #24292e;
     cursor: pointer;
 }
 
