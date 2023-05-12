@@ -1,5 +1,6 @@
 import "./post.css";
 import { Link } from "react-router-dom";
+import PostPhoto from '../../photos/PostPhoto.jpg';
 
 interface PostProps {
   post: {
@@ -44,7 +45,7 @@ export type PostType = {
 export default function Post({ post }: PostProps) {
   return (
     <div className="post">
-      <img className="postImg" src="https://images.wallpaperscraft.com/image/single/japan_shirakawa_houses_112963_1920x1080.jpg" alt="" />
+      <img className="postImg" src={PostPhoto} alt="" />
       <div className="postInfo">
         <div className="postCats">
         </div>

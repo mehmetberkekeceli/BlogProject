@@ -1,4 +1,5 @@
 import "./header.css";
+import HomePhoto from '../../photos/HomePhoto.png';
 
 const Header = (): JSX.Element => {
   return (
@@ -9,7 +10,7 @@ const Header = (): JSX.Element => {
       </div>
       <img
         className="headerImg"
-        src="https://wallpaper.dog/large/834571.png"
+        src={HomePhoto}
         alt=""
       />
     </div>

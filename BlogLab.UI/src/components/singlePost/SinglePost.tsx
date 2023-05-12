@@ -4,6 +4,7 @@ import { useLocation, Link } from "react-router-dom";
 import { config } from "../../config/env";
 import { Context } from "../../context/Context";
 import "./singlePost.css";
+import PostPhoto from '../../photos/PostPhoto.jpg';
 
 interface Post {
   blogId: number;
@@ -144,7 +145,7 @@ export default function SinglePost() {
   return (
     <div className="singlePost">
     <div className="singlePostWrapper">
-        <img src="https://images.wallpaperscraft.com/image/single/japan_shirakawa_houses_112963_1920x1080.jpg" alt="" className="singlePostImg" />
+        <img src={PostPhoto} alt="" className="singlePostImg" />
       {updateMode ? (
         <input
           type="text"

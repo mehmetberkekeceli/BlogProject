@@ -1,5 +1,6 @@
 import "./about.css";
 import React from "react";
+import ProfilePhoto from '../../photos/ProfilePhoto.jpg';
 
 const About: React.FC = () => {
   
@@ -8,7 +9,7 @@ const About: React.FC = () => {
       <div className="aboutItem">
         <span className="aboutTitle">Hakkımda </span>
         <br />
-        <img className="aboutimg" src="https://avatars.githubusercontent.com/u/108813428?v=4" alt="Profile" />
+        <img className="aboutimg" src={ProfilePhoto} alt="Profile" />
         <br />
         <h1 className="headdqwe">MBRKCL JR <i className="fa-solid fa-rocket"></i></h1>
         <br />

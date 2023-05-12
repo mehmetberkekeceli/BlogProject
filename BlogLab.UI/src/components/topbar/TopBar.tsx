@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { Context } from "../../context/Context";
 import "./topbar.css";
+import ProfilePhoto from '../../photos/ProfilePhoto.jpg';
 
 export default function TopBar(): JSX.Element {
 const { user, dispatch } = useContext(Context);
@@ -65,7 +66,7 @@ Gönderi Yayınla !
 </div>
 <div className="topRight">
 {user ? (
-<img className="topImg" src="https://avatars.githubusercontent.com/u/108813428?v=4" alt="" />
+<img className="topImg" src={ProfilePhoto} alt="" />
 ) : (
 <ul className="topList">
 <li className="topListItem">
