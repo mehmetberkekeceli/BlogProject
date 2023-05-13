@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "./news.css"
+import BinanceAPIExample from "../../components/crypto/BinanceAPIExample";
 
 interface Article {
   title: string;
@@ -25,10 +26,10 @@ function News() {
     };
     fetchArticles();
   }, []);
-
   return (
     <div className="News">
       <h1 className="News-Header">Dünyadan Teknoloji Haberleri</h1>
+      <BinanceAPIExample/>
       {articles.length > 0 ? (
         articles.map((article) => (
           // sadece img url'si null değilse, yani bir resim varsa, devam eder.
