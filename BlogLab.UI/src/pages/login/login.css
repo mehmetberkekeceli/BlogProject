@@ -14,12 +14,14 @@
   
   .loginTitle {
     font-size: 50px;
+    font-family: 'Lora', sans-serif;
   }
   
   .loginForm {
     margin-top: 20px;
     display: flex;
     flex-direction: column;
+    font-family: 'Varela', sans-serif;
   }
   
   .loginForm > label {
@@ -31,6 +33,8 @@
     background-color: white;
     border: none;
     border-radius: 10px;
+    font-family: 'Lora', sans-serif;
+    text-align: center;
   }
   
   .loginInput:focus {
@@ -46,6 +50,7 @@
     border: none;
     border-radius: 10px;
     text-align: center;
+    font-family: 'Varela', sans-serif;
   }
   
   .loginRegisterButton {
@@ -58,4 +63,5 @@
     border: none;
     color: white;
     border-radius: 10px;
+    font-family: 'Varela', sans-serif;
   }

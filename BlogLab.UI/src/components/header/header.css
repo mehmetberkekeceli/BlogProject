@@ -1,12 +1,12 @@
 .header {
-    margin-top: 60px;
+    margin-bottom: 0;
 }
 
 .headerTitles {
     display: flex;
     flex-direction: column;
     align-items: center;
-    font-family: 'Lora',serif;
+    font-family:'Lora' serif;
     color: #444;
 }
 
@@ -14,17 +14,19 @@
     position: absolute;
     top: 8%;
     font-size: 20px;
+    font-family: 'Varela',serif;
 }
 
 .headerTitleLg {
     position: absolute;
-    top: 9%;
+    top: 10%;
     font-size: 80px;
 }
 
 .headerImg {
     width: 100%;
-    height: 510px;
-    margin-top: 44px;
+    height: 663px;
+    margin-top: 0px;
     object-fit: cover;
+    border-radius: 10px;
 }

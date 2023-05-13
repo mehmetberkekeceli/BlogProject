@@ -3,14 +3,22 @@ import { Link } from "react-router-dom";
 import { Context } from "../../context/Context";
 import "./topbar.css";
 import ProfilePhoto from '../../photos/ProfilePhoto.jpg';
+import { useHistory } from "react-router-dom";
 
 export default function TopBar(): JSX.Element {
-const { user, dispatch } = useContext(Context);
-const handleClick = () => {
-  if (window.location.pathname === "/") {
-    window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
-  }
-};
+  const { user, dispatch } = useContext(Context);
+  const history = useHistory();
+
+  const handleClick = () => {
+    if (history.location.pathname === "/") {
+      window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+    } else {
+      history.push('/');
+      window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+    }
+  };
+
+
 const handleLogout = () => {
 dispatch({ type: "LOGOUT" });
 };
@@ -19,7 +27,7 @@ return (
 <div className="top">
 <div className="topLeft">
 <i className="fa-solid fa-meteor"></i>
-<i className="MBRKCL BLOG">MBRKCL BLOG</i>
+<i className="BlogMbrkcl">MBRKCL DESIGN</i>
 </div>
 <div className="topIcon">
 <a href="https://github.com/mehmetberkekeceli" target="_blank" rel="noreferrer">
@@ -64,12 +72,12 @@ Haberler
 </Link>
 </li>
 <i className="fa-solid fa-star"></i>
-<li className="topListItem" onClick={handleLogout}>
-{user && "Çıkış Yap"}
-</li>
 </ul>
 </div>
 <div className="topRight">
+<li className="topListItem" onClick={handleLogout}>
+{user && "Çıkış Yap"}
+</li>
 {user ? (
 <img className="topImg" src={ProfilePhoto} alt="" />
 ) : (

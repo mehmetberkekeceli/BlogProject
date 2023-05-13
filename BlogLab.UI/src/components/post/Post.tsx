@@ -43,16 +43,22 @@ export type PostType = {
 };
 
 export default function Post({ post }: PostProps) {
+  const shortenedContent = post.content.substring(0, 100) + "...";
+
   return (
     <div className="post">
-      <img className="postImg" src={PostPhoto} alt="" />
       <div className="postInfo">
         <div className="postCats">
         </div>
         <Link to={`/post/${post.blogId}`} className="link">
+        <img className="postImg" src={PostPhoto} alt="" />
           <p className="postCat">Yazar: {post.username}</p>
-          <br />
           <span className="postTitle">{post.title}</span>
+          <p className="postDesc">{shortenedContent}</p>
+          {post.content.length > 100 && (
+            <Link to={`/post/${post.blogId}`}>
+            </Link>
+          )}
         </Link>
         <hr />
         <span className="postDate">

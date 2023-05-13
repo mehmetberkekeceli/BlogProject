@@ -1,12 +1,21 @@
 .Ziyaret {
-    font-family:'Josefin Sans', sans-serif ;
-    font-size:small;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 13px;
     position: fixed;
-    bottom: 10px;
-    right: 10px;
+    bottom: 7px;
+    right: 15px;
     background-color: #333;
     color: white;
-    padding: 5px;
-    border-radius: 10px;
+    padding: 8px 10px;
+    border-radius: 30px;
     cursor: pointer;
-}
+    border: none;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+  }
+  
+  .Ziyaret:hover {
+    background-color: green;
+    transform: translateY(-5px);
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.3);
+  }

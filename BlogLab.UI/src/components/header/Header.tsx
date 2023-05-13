@@ -7,12 +7,12 @@ const Header = (): JSX.Element => {
       <div className="headerTitles">
         <span className="headerTitleSm">React & .NET</span>
         <span className="headerTitleLg">Blog</span>
-      </div>
-      <img
+        <img
         className="headerImg"
         src={HomePhoto}
         alt=""
       />
+      </div>
     </div>
   );
 }

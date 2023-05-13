@@ -193,7 +193,8 @@ export default function SinglePost() {
           <div className="comment-container">
     {comment && <div className="singlePostInfo">{comment.username} - {new Date(comment.publishDate).toLocaleString()}</div>}
     {comment && <p className="comment-content">{comment.content}</p>}
-    {comment && user?.username === comment.username && <button className="deleteCom" onClick={() => handleCommentDelete(comment.blogCommentId)}>Yorumu Sil!</button>}
+    <button className={`deleteCom ${comment && user?.username === comment.username ? '' : 'hidden'}`} onClick={() => handleCommentDelete(comment.blogCommentId)}>
+  <i className="singlePostIcon far fa-trash-alt"></i> </button>
     </div>
        ))}
         {user ? (
