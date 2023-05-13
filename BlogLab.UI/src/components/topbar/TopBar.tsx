@@ -58,6 +58,11 @@ Hakkımda
 Gönderi Yayınla !
 </Link>
 </li>
+<li className="topListItem">
+<Link className="link" to="/News">
+Haberler
+</Link>
+</li>
 <i className="fa-solid fa-star"></i>
 <li className="topListItem" onClick={handleLogout}>
 {user && "Çıkış Yap"}

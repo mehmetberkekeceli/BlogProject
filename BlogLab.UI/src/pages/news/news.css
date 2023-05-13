@@ -1,0 +1,56 @@
+.News {
+    font-family: 'Lora', sans-serif;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  
+  .News-Header {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-top: 2rem;
+  }
+  
+  .News div {
+    margin-top: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 2px solid rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    padding: 1.5rem;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
+  }
+  
+  .News div:hover {
+    box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.2);
+  }
+  
+  .News div h2 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    text-align: center;
+  }
+  
+  .News div p {
+    font-size: 1.3rem;
+    line-height: 1.8rem;
+    text-align: center;
+  }
+  
+  .News div a {
+    background-color: #00A3FF;
+    color: white;
+    font-weight: bold;
+    font-size: 1.3rem;
+    padding: 0.7rem 2rem;
+    border-radius: 8px;
+    text-decoration: none;
+    margin-top: 1.5rem;
+    transition: background-color 0.3s ease;
+  }
+  
+  .News div a:hover {
+    background-color: #0077B6;
+  }
+  

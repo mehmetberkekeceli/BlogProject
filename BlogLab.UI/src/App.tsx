@@ -10,6 +10,7 @@ import { useContext } from "react";
 import { Context } from "./context/Context";
 import Footer from "./components/footer/Footer";
 import VisitorCounter from "./components/visitor/VisitorCounter";
+import News from "./pages/news/News";
 
 function App(): JSX.Element {
   const { user } = useContext(Context);
@@ -26,6 +27,7 @@ function App(): JSX.Element {
         <Route path="/login">{user ? <Home /> : <Login />}</Route>
         <Route path="/write">{user ? <Write /> : <Login />}</Route>
         <Route path="/about">{<About />}</Route>
+        <Route path="/News">{<News/>}</Route>
         <Route path="/post/:blogId">
           <Single />
         </Route>
