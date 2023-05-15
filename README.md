@@ -21,20 +21,39 @@ React Redux,React Hooks,Config Env,Context API and TypeScript
 
 How Looks Like ?
 =>
-Home =>
-![Blog1](https://user-images.githubusercontent.com/108813428/234650933-5da6b1dc-8cc1-469a-ae19-f00bb8a37f77.png)
-HomePosts =>
-![Blog2](https://user-images.githubusercontent.com/108813428/234650948-d9059dd7-b555-41e9-a11a-77d12980ac9c.png)
-SinglePost =>
-![Blog3](https://user-images.githubusercontent.com/108813428/234650960-282456f4-9a2a-406d-b468-f1494657ac6a.png)
-SinglePostContentAndComments =>
-![Blog4](https://user-images.githubusercontent.com/108813428/234650971-f8ca8c1c-7eb0-4116-b06f-02f9d05735bc.png)
-AboutPage =>
-![Blog5](https://user-images.githubusercontent.com/108813428/234650978-7d1e6f82-966e-417f-ae8e-28b721fd2ff3.png)
+HomePage =>
+
+![Home](https://github.com/mehmetberkekeceli/BlogProject/assets/108813428/71fe835c-e751-4920-8c6c-72e2170685d4)
+
 LoginPage =>
-![Blog6](https://user-images.githubusercontent.com/108813428/234650979-84c06e59-05d4-4c5f-96cf-27dad068337a.png)
+
+![Login](https://github.com/mehmetberkekeceli/BlogProject/assets/108813428/c0e490b7-9b1d-44c6-ba51-010e0ec2a680)
+
 RegisterPage =>
-![Blog7](https://user-images.githubusercontent.com/108813428/234650987-fad6e858-f047-48ab-bcc4-496b211c0691.png)
+
+![Register](https://github.com/mehmetberkekeceli/BlogProject/assets/108813428/22ca2987-0f28-423e-a00e-de3ed71ba64f)
+
+AboutPage =>
+
+![About](https://github.com/mehmetberkekeceli/BlogProject/assets/108813428/107c7d57-47bb-46d6-b0a2-5b8a25f1559f)
+
+Posts =>
+
+![Posts](https://github.com/mehmetberkekeceli/BlogProject/assets/108813428/43d9e616-7141-42a9-9b1a-734c778e13bb)
+
+SinglePost =>
+
+![SinglePost](https://github.com/mehmetberkekeceli/BlogProject/assets/108813428/0e210092-cca1-4e54-8779-257390d527a6)
+
+SinglePostComments =>
+
+![Comment](https://github.com/mehmetberkekeceli/BlogProject/assets/108813428/7b3eadeb-54df-4617-a268-6c1e62ee3bc1)
+
+News =>
+![News](https://github.com/mehmetberkekeceli/BlogProject/assets/108813428/f2140863-ee5f-41fb-849a-52fd8e885aab)
+
 WritePage =>
-![Blog8](https://user-images.githubusercontent.com/108813428/234650999-a6601370-ee8c-47f7-ace1-2c4d553d8faa.png)
+
+![Write](https://github.com/mehmetberkekeceli/BlogProject/assets/108813428/a4419e18-ef2c-46e9-8c57-59e51a1427e3)
+
 <==> HappyCoding <==>
