@@ -27,8 +27,8 @@ function News() {
     fetchArticles();
   }, []);
   return (
-    <div className="News">
-      <h1 className="News-Header">Dünyadan Teknoloji Haberleri</h1>
+    <div className="news">
+      <h1 className="newsHeader">Dünyadan Teknoloji Haberleri</h1>
       <BinanceAPIExample/>
       {articles.length > 0 ? (
         articles.map((article) => (

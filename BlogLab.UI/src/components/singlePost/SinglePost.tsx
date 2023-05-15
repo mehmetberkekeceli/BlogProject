@@ -188,32 +188,32 @@ export default function SinglePost() {
         <p className="singlePostDesc">{content}</p>
       )}
       <hr />
-     <div className="main-container">
+     <div className="mainContainer">
         {comments.map((comment) => (
-          <div className="comment-container">
+          <div className="commentContainer">
     {comment && <div className="singlePostInfo">{comment.username} - {new Date(comment.publishDate).toLocaleString()}</div>}
-    {comment && <p className="comment-content">{comment.content}</p>}
+    {comment && <p className="commentContent">{comment.content}</p>}
     <button className={`deleteCom ${comment && user?.username === comment.username ? '' : 'hidden'}`} onClick={() => handleCommentDelete(comment.blogCommentId)}>
   <i className="singlePostIcon far fa-trash-alt"></i> </button>
     </div>
        ))}
         {user ? (
           
-          <div className="comment-flexbox">
-            <h3 className="comment-text">Yorum Yap!</h3>
+          <div className="commentFlexbox">
+            <h3 className="commentText">Yorum Yap!</h3>
             <textarea
               value={comment}
               onChange={onChangeHandler}
-              className="input-box"
+              className="inputBox"
             />
             
             
-            <button onClick={onClickHandler} className="comment-button">
+            <button onClick={onClickHandler} className="commentButton">
               Gönder!
             </button>
           </div>
         ) : (
-          <p className="comment-login">Yorum yapmak için giriş yapın!</p>
+          <p className="commentLogin">Yorum yapmak için giriş yapın!</p>
         )}
       </div>
     </div>

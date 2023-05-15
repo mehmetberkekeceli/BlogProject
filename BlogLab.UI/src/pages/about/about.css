@@ -1,4 +1,4 @@
-.About {
+.about {
     position: relative;
     flex: 3;
     margin: 0;
@@ -12,7 +12,7 @@
     font-family: 'Lora', sans-serif;
   }
     
-    .AboutItem {
+    .aboutItem {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -20,7 +20,7 @@
     margin-top: 1rem;
     }
     
-    .AboutProfile {
+    .aboutProfile {
     border-radius: 50%;
     width: 8rem;
     height: 8rem;
@@ -30,7 +30,7 @@
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     }
     
-    .Follow {
+    .follow {
     margin: 0;
     font-size: clamp(1rem, 3vw, 1.5rem);
     font-weight: 600;
@@ -39,7 +39,7 @@
     text-align: center;
     }
     
-    .Text {
+    .text {
     font-size: clamp(1rem, 3vw, 1.2rem);
     font-family: 'Lora', sans-serif;
     color: #555;
@@ -49,14 +49,14 @@
     margin-top: 0rem;
     }
     
-    .HeadProfile {
+    .headProfile {
     font-size: clamp(1rem, 3vw, 1.5rem);
     font-family: 'Lora', sans-serif;
     color: #222;
     margin-bottom: 2rem;
     }
     
-    .TopIconss i {
+    .topIconss i {
     font-size: 3rem;
     color: #222;
     transition: all 0.2s ease;
@@ -66,12 +66,12 @@
     margin-top: 2rem;
     }
     
-    .TopIconss i:hover {
+    .topIconss i:hover {
     color: #0c0c0c;
     transform: scale(1.1);
     cursor: pointer;
     }
-    .TextVid {
+    .textVid {
     font-size: clamp(1rem, 3vw, 1.2rem);
     font-family: 'Lora', sans-serif;
     color: #555;
@@ -81,7 +81,7 @@
     margin-top: 2rem;
     margin-left: 5rem;
     }
-    .Camper {
+    .camper {
         border-radius: 20px;
         text-align: center;
     }

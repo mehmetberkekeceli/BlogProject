@@ -14,7 +14,7 @@ function VisitorCounter(): JSX.Element {
 
   return (
     <div>
-      <h2 className='Ziyaret'>Aktif: {visitorCount} Ziyaretçi</h2>
+      <h2 className="visitor">Aktif: {visitorCount} Ziyaretçi</h2>
     </div>
   );
 }

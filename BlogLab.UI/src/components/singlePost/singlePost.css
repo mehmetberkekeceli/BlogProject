@@ -37,7 +37,7 @@
         cursor: pointer;
         transition: all 0.3s ease;
         color: darkred;
-        font-size: x-large;
+        font-size: larger;
       }
       
       .singlePostIcon:hover{
@@ -73,14 +73,14 @@
     margin-right: 10px;
     }
     
-    .comment-flexbox {
+    .commentFlexbox {
         display: flex;
         flex-direction: column;
         align-items: center;
         margin-top: 40px;
         }
         
-        .comment-text {
+        .commentText {
         margin: 12px 0;
         font-size: 1.4rem;
         font-weight: 600;
@@ -89,7 +89,7 @@
         text-align: center;
         }
         
-        .input-box {
+        .inputBox {
         height: 75px;
         width: 40%;
         background-color: #ECEFF1;
@@ -104,7 +104,7 @@
         margin: 0 auto;
         }
         
-        .comment-button {
+        .commentButton {
         height: 25px;
         width: 10%;
         background-color: #ECEFF1;
@@ -122,13 +122,13 @@
         transition: all 0.3s ease;
         }
         
-        .comment-button:hover {
+        .commentButton:hover {
             background-color: darkgreen;
             transform: translateY(-5px);
             box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.3);
         }
         
-        .comment-container {
+        .commentContainer {
         height: auto;
         width: 40%;
         background-color: #ECEFF1;
@@ -142,7 +142,7 @@
         position: relative;
         }
         
-        .comment-container p {
+        .commentContainer p {
         margin: 0;
         }
         
@@ -153,7 +153,7 @@
         transition: all 0.3s ease;
         color: darkred;
         background-color: #ECEFF1;
-        font-size:larger;
+        font-size:large;
         position: absolute;
         top: 0px;
         right: 0px;

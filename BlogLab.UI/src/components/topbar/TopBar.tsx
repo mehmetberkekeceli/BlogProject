@@ -27,7 +27,7 @@ return (
 <div className="top">
 <div className="topLeft">
 <i className="fa-solid fa-meteor"></i>
-<i className="BlogMbrkcl">MBRKCL DESIGN</i>
+<i className="blogName">MBRKCL DESIGN</i>
 </div>
 <div className="topIcon">
 <a href="https://github.com/mehmetberkekeceli" target="_blank" rel="noreferrer">
